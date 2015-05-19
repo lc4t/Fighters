@@ -1,7 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <iostream>
-#include "Includes/Config.hpp"
+#include "config.h"
+
 
 
 using namespace std;
@@ -10,30 +11,35 @@ using namespace sf;
 
 int main()
 {
-	//window load
-	sf::RenderWindow window(sf::VideoMode(400, 600), "Fighters");
+	/***********    window     **********/
 
-	// BGI load init
+	sf::RenderWindow window(sf::VideoMode(GAME_WIDTH, GAME_HEIGHT), GAME_NAME);
+
+	/***********      END      **********/
+
+	/***********    BGI load   **********/
 	sf::Texture background;
 	if (!background.loadFromFile(bgiPath))
 		{
-			cout<<"Error to load background"<<endl;
+			cout<<"Error to load backgroundImage"<<endl;
 		}
 	sf::Sprite bg(background);
-	// BGI load init end
+	/***********      END      **********/
 
-	//BGM load
+	/***********    BGM load   **********/
+
 	sf::Music music;
 	if (!music.openFromFile(bgmPath))
-	    return EXIT_FAILURE;
+	    {
+			cout<<"Error to load backgroundMusic"<<endl;
+	    }
 	music.play();
-	//BGM load end
 
+	/***********      END      **********/
 
-
-    //font load
+	/***********   font load   **********/
     sf::Font font;
-    if (!font.loadFromFile("Resources/font/STHeiti Light.ttc"))
+    if (!font.loadFromFile(fontPath))
 		{
 			cout<<"Error load font"<<endl;
 		}
@@ -44,8 +50,26 @@ int main()
     text.setColor(sf::Color::Red);
     text.setStyle(sf::Text::Bold | sf::Text::Underlined);
 
+    /***********      END      **********/
 
 
+	/***********    HERO load  **********/
+    sf::Texture herok;
+    	if (!herok.loadFromFile(heroPath))
+    		{
+    			cout<<"Error to load heroImage"<<endl;
+    		}
+//    sf::Sprite Hero(herok);
+    sf::Sprite hero;
+    hero.setPosition(sf::Vector2f(150, 470));
+    hero.setTexture(herok);
+
+
+	/***********      END      **********/
+
+
+
+    /***********   main run    **********/
 
     while (window.isOpen())
     {
@@ -58,7 +82,8 @@ int main()
 
         window.clear();
         window.draw(bg);		//BGI
-        window.draw(text);		//font
+        window.draw(hero);		//hero
+//        window.draw(text);		//font
         window.display();
     }
 

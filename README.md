@@ -56,3 +56,7 @@ I use eclipse,so add the libraries at Plane ->Properties->C/C++ Build -> Setting
 
 Then,test it.
 Works!
+
+- main.cpp 主程序
+- config.h 存放常量,配置文件
+- 
