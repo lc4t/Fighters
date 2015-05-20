@@ -1,7 +1,8 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 #include <string>
-
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 /***********global    ***********/
 
 const int GAME_HEIGHT = 600;
