@@ -1,4 +1,5 @@
 
+#include <Musics.h>
 #include <iostream>
 #include "Stage.h"
 #include "BackgroundImage.h"
@@ -15,34 +16,19 @@ int main()
 	/***********    window     **********/
 
 	Stage stage;
+
+	/***********      END      **********/
+	/***********    BGI load   **********/
+
 	BackgroundImage BGI;
 
 	/***********      END      **********/
-
-	/***********    BGI load   **********/
-
-//	sf::Texture background;
-//	if (!background.loadFromFile(bgiPath))
-//		{
-//			cout<<"Error to load backgroundImage"<<endl;
-//		}
-//	sf::Sprite bg(background);
-
-
-
-	/***********      END      **********/
-
 	/***********    BGM load   **********/
 
-//	sf::Music music;
-//	if (!music.openFromFile(bgmPath))
-//	    {
-//			cout<<"Error to load backgroundMusic"<<endl;
-//	    }
-//	music.play();
+	Musics backgroundMusic;
+	backgroundMusic.backgroundMusicPlay();
 
 	/***********      END      **********/
-
 	/***********   font load   **********/
 
 //    sf::Font font;
@@ -106,9 +92,10 @@ int main()
 			}
 
 		stage.getWindow()->clear();
-		stage.getWindow()->draw(BGI.getBG());
+		stage.getWindow()->draw(BGI.getBG());	//加载背景图片
 
 		stage.getWindow()->display();
+
 		}
 	}
     return 0;

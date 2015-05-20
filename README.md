@@ -59,4 +59,8 @@ Works!
 
 - main.cpp 主程序
 - config.h 存放常量,配置文件
+- Stage
+- backgroundImage
+- Musics
+-
 - 
