@@ -62,5 +62,6 @@ Works!
 - Stage
 - backgroundImage
 - Musics
--
-- 
+- Object:
+- 	Hero
+

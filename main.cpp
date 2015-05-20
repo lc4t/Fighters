@@ -3,6 +3,8 @@
 #include <iostream>
 #include "Stage.h"
 #include "BackgroundImage.h"
+#include "Hero.h"
+
 #include "config.h"
 
 
@@ -48,38 +50,13 @@ int main()
 
 	/***********    HERO load  **********/
 
-//    sf::Texture herok;
-//    	if (!herok.loadFromFile(heroPath))
-//    		{
-//    			cout<<"Error to load heroImage"<<endl;
-//    		}
-////    sf::Sprite Hero(herok);
-//    sf::Sprite hero;
-//    hero.setPosition(sf::Vector2f(150, 470));
-//    hero.setTexture(herok);
-
+	Hero hero;
 
 	/***********      END      **********/
 
 
 
     /***********   main run    **********/
-
-//    while (stage.getWindow->isOpen())
-//    {
-//        sf::Event event;
-//        while (window.pollEvent(event))
-//        {
-//            if (event.type == sf::Event::Closed)
-//                window.close();
-//        }
-//
-//        window.clear();
-//        window.draw(bg);		//BGI
-//        window.draw(hero);		//hero
-////        window.draw(text);		//font
-//        window.display();
-//    }
 
 	while (stage.getWindow()->isOpen())
 	{
@@ -93,10 +70,10 @@ int main()
 
 		stage.getWindow()->clear();
 		stage.getWindow()->draw(BGI.getBG());	//加载背景图片
-
+		stage.getWindow()->draw(hero.getHero());
 		stage.getWindow()->display();
 
 		}
-	}
+	} //run
     return 0;
-}
+}//main
