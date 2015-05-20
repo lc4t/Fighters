@@ -7,8 +7,9 @@
 
 #ifndef INCLUDE_HERO_H_
 #define INCLUDE_HERO_H_
+#include "Object.h"
 #include "config.h"
-class Hero {
+class Hero:public Object {
 public:
 	Hero();
 	sf::Texture myHero;
