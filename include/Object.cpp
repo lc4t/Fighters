@@ -6,13 +6,20 @@
  */
 
 #include <Object.h>
-
+#include "config.h"
 Object::Object() {
 	// TODO Auto-generated constructor stub
 
 }
 
+
+
+
 Object::~Object() {
 	// TODO Auto-generated destructor stub
 }
+
+
+
+
 

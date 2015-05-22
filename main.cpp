@@ -22,7 +22,7 @@ int main()
 	/***********      END      **********/
 	/***********    BGI load   **********/
 
-	BackgroundImage BGI;
+//	BackgroundImage BGI;
 
 	/***********      END      **********/
 	/***********    BGM load   **********/
@@ -50,7 +50,7 @@ int main()
 
 	/***********    HERO load  **********/
 
-	Hero hero;
+//	Hero hero;
 
 	/***********      END      **********/
 
@@ -58,22 +58,38 @@ int main()
 
     /***********   main run    **********/
 
-	while (stage.getWindow()->isOpen())
-	{
-		sf::Event event;
-		while (stage.getWindow()->pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-			{
-				stage.getWindow()->close();
-			}
+//	while (stage.getWindow()->isOpen())
+//	{
+//		sf::Event event;
+//		while (stage.getWindow()->pollEvent(event))
+//		{
+			stage.draw();
+//			if (event.type == sf::Event::Closed)
+//			{
+//				stage.getWindow()->close();
+//			}
+//			if (event.key.code == sf::Keyboard::Left)
+//			{
+//				hero.moveLeft();
+//			}
+//			if (event.key.code == sf::Keyboard::Right)
+//			{
+//			    hero.moveRight();
+//			}
+//			if (event.key.code == sf::Keyboard::Right)
+//			{
+//				hero.fire();
+//			}
 
-		stage.getWindow()->clear();
-		stage.getWindow()->draw(BGI.getBG());	//加载背景图片
-		stage.getWindow()->draw(hero.getHero());
-		stage.getWindow()->display();
+//			stage.getWindow()->clear();
+//			stage.getWindow()->draw(BGI.getBG());	//加载背景图片
+//			stage.getWindow()->draw(hero.getHero());
+//
+//
+//
+//			stage.getWindow()->display();
 
-		}
-	} //run
+//		}
+	 //run
     return 0;
 }//main

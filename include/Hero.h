@@ -14,8 +14,12 @@ public:
 	Hero();
 	sf::Texture myHero;
 	sf::Sprite hero;
+	int isOverBound(int offsetX);
 	void loadMyhero();
 	sf::Sprite getHero();		//返回 飞机
+	void moveLeft();
+	void moveRight();			//移动
+	void fire();				//开火
 
 	virtual ~Hero();
 };

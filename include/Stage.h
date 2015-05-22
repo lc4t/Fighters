@@ -9,12 +9,23 @@
 #define INCLUDE_STAGE_H_
 
 #include "config.h"
-
-class Stage {
+#include "BackgroundImage.h"
+#include "Hero.h"
+#include "Bullet.h"
+#include <vector>
+class Stage{
 public:
 	Stage();
+	std::vector<Bullet*> bullets;
+	BackgroundImage BGI;
+	Hero hero;
+	void setBGI(BackgroundImage &BGI);
+	void setHero(Hero &hero);
+
 	sf::RenderWindow* window;
 	sf::RenderWindow* getWindow();
+	void draw();
+	std::vector<Bullet*> bullet;
 	virtual ~Stage();
 
 };
