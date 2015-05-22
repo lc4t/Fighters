@@ -36,34 +36,44 @@ void Stage::draw()
 	sf::Event event;
 	while (this->getWindow()->isOpen())
 		{
-		while (this->getWindow()->pollEvent(event))
+		if (this->getWindow()->pollEvent(event))
 			{
 				if (event.type == sf::Event::Closed)
-				{
-					this->getWindow()->close();
-				}
+					{
+						this->getWindow()->close();
+					}
 				if (event.key.code == sf::Keyboard::Left)
-				{
-					std::cout<<"Left"<<std::endl;
-					this->hero.moveLeft();
-				}
+					{
+						std::cout<<"Left"<<std::endl;
+						this->hero.moveLeft();
+					}
 				if (event.key.code == sf::Keyboard::Right)
-				{
-					std::cout<<"Right"<<std::endl;
-					this->hero.moveRight();
-				}
-				if (event.key.code == sf::Keyboard::Right)
-				{
-					std::cout<<"Fire!!"<<std::endl;
-					this->hero.fire();
-				}
-				this->getWindow()->clear();
-				this->getWindow()->draw(this->BGI.getBG());	//加载背景图片
-				this->getWindow()->draw(this->hero.getHero());
+					{
+						std::cout<<"Right"<<std::endl;
+						this->hero.moveRight();
+					}
+				if (event.key.code == sf::Keyboard::Space)
+					{
+						std::cout<<"Fire!!"<<std::endl;
+						hero.isFire();
+					}
+			}
+		{
+			this->getWindow()->clear();
+			this->getWindow()->draw(this->BGI.getBG());	//加载背景图片
 
-				this->getWindow()->display();
+			this->getWindow()->draw(this->hero.getHero());
+
+			std::vector<Bullet*> heroBullet = hero.fire();
+			for (std::vector<Bullet*>::iterator i = heroBullet.begin();i != heroBullet.end(); i++)
+			{
+				std::cout<<"print bullet"<<std::endl;
+				this->getWindow()->draw((*i)->drawBullet());
 			}
 		}
+		this->getWindow()->display();
+		}
+
 }
 
 sf::RenderWindow* Stage::getWindow()

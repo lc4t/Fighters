@@ -8,11 +8,14 @@
 #ifndef INCLUDE_BULLET_H_
 #define INCLUDE_BULLET_H_
 #include "Object.h"
+
 class Bullet:public Object{
 public:
-	sf::Sprite bullet;
+	sf::Texture heroBullet;
+	sf::Sprite hero_bullet;
 	Bullet();
-	Bullet(float x, float y);
+	Bullet(sf::Vector2f heroPosition);
+	sf::Sprite drawBullet();
 	void bulletAutoMove();
 	virtual ~Bullet();
 };

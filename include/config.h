@@ -20,6 +20,7 @@ const std::string fontBasePath = "resources/font/";
 const std::string bgiPath = imageBasePath + "background.png";
 const std::string gameOverImagePath = imageBasePath + "gameover.png";
 const std::string heroPath = imageBasePath + "hero.png";
+const std::string bulletPath = imageBasePath + "heroBullet.png";
 
 /***********music path***********/
 

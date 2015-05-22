@@ -19,6 +19,7 @@ public:
 	std::vector<Bullet*> bullets;
 	BackgroundImage BGI;
 	Hero hero;
+
 	void setBGI(BackgroundImage &BGI);
 	void setHero(Hero &hero);
 
