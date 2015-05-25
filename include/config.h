@@ -12,6 +12,7 @@
 const int GAME_HEIGHT = 600;
 const int GAME_WIDTH =	400;
 const std::string GAME_NAME = "Fighters";
+const int heroFireSpeed = 25;
 
 /***********resources ***********/
 

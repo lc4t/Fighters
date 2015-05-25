@@ -36,7 +36,7 @@ int Hero::isOverBound(int offsetX)
 {
 	sf::Vector2f heroPosition = this->hero.getPosition();
 	float heroPositionX = heroPosition.x;
-	std::cout<<"I am at X: "<<heroPositionX<<std::endl;
+	std::cout<<"I am at X: "<<heroPositionX<<"Y: "<<heroPosition.y<<std::endl;
 	if ( heroPositionX + offsetX >= -41 && heroPositionX + offsetX <= 341)
 	{
 		return 1;	//yes can move
@@ -77,7 +77,7 @@ void Hero::moveRight()
 //
 //}
 
-std::queue<Bullet*> Hero::fire()
+std::vector<Bullet*> Hero::fire()
 {
 //	this->heroBullet.push_back(new Bullet(this->hero.getPosition()));
 	return this->heroBullet;
@@ -87,7 +87,7 @@ void Hero::isFire()
 {
 //	if (heroBulletCount > 0)
 //	{
-		this->heroBullet.push(new Bullet(this->hero.getPosition()));
+		this->heroBullet.push_back(new Bullet(this->hero.getPosition()));
 //		heroBulletCount--;
 //	}
 

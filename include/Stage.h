@@ -17,6 +17,7 @@
 class Stage{
 public:
 	Stage();
+	int heroBulletAdder;
 	std::vector<Bullet*> bullets;
 	BackgroundImage BGI;
 	Musics backgroundMusic;
