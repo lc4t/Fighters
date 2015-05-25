@@ -12,12 +12,27 @@
 using namespace std;
 using namespace sf;
 
+//void timer(Stage *stage)
+//{
+//	//isplay
+//	while(1)
+//	{
+//		stage->hero.addHeroBullet();
+//		sf::sleep(sf::milliseconds(500));
+//	}
+//
+//}
 
 int main()
 {
+
 	Stage stage;
-	Musics backgroundMusic;
-	backgroundMusic.backgroundMusicPlay();
+//    sf::Thread thredTimer(&timer, &stage);
+//    thredTimer.launch();
+
+//	Musics backgroundMusic;
+//	backgroundMusic.backgroundMusicPlay();
 	stage.draw();
     return 0;
 }
+

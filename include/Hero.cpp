@@ -13,6 +13,7 @@ Hero::Hero() {
 	loadMyhero();
 	this->hero.setPosition(sf::Vector2f(150, 480));
 	this->hero.setTexture(this->myHero);
+//	heroBulletCount = 1;
 }
 
 
@@ -49,18 +50,18 @@ int Hero::isOverBound(int offsetX)
 
 void Hero::moveLeft()
 {
-	if (isOverBound(-10))
+	if (isOverBound(-3))
 	{
-		this->hero.move(-10,0);
+		this->hero.move(-3,0);
 	}
 
 }
 
 void Hero::moveRight()
 {
-	if (isOverBound(10))
+	if (isOverBound(3))
 	{
-		this->hero.move(10,0);
+		this->hero.move(3,0);
 	}
 
 }
@@ -76,7 +77,7 @@ void Hero::moveRight()
 //
 //}
 
-std::vector<Bullet*> Hero::fire()
+std::queue<Bullet*> Hero::fire()
 {
 //	this->heroBullet.push_back(new Bullet(this->hero.getPosition()));
 	return this->heroBullet;
@@ -84,9 +85,18 @@ std::vector<Bullet*> Hero::fire()
 
 void Hero::isFire()
 {
-	this->heroBullet.push_back(new Bullet(this->hero.getPosition()));
+//	if (heroBulletCount > 0)
+//	{
+		this->heroBullet.push(new Bullet(this->hero.getPosition()));
+//		heroBulletCount--;
+//	}
+
 }
 
+//void Hero::addHeroBullet()
+//{
+//	heroBulletCount++;
+//}
 
 
 Hero::~Hero() {

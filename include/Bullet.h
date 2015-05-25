@@ -8,7 +8,7 @@
 #ifndef INCLUDE_BULLET_H_
 #define INCLUDE_BULLET_H_
 #include "Object.h"
-
+#include "config.h"
 class Bullet:public Object{
 public:
 	sf::Texture heroBullet;
@@ -17,6 +17,7 @@ public:
 	Bullet(sf::Vector2f heroPosition);
 	sf::Sprite drawBullet();
 	void bulletAutoMove();
+	bool isShouldDelete();
 	virtual ~Bullet();
 };
 

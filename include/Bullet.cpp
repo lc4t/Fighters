@@ -22,10 +22,7 @@ Bullet::Bullet(sf::Vector2f heroPosition)
 
 void Bullet::bulletAutoMove()
 {
-//	while (this->hero_bullet.getPosition().y > 0)
-//	{
-		hero_bullet.move(0,-2);
-//	}
+		hero_bullet.move(0,-5);
 }
 
 
@@ -33,6 +30,19 @@ sf::Sprite Bullet::drawBullet()
 {
 	bulletAutoMove();
 	return this->hero_bullet;
+}
+
+bool Bullet::isShouldDelete()
+{
+	if (this->hero_bullet.getPosition().y > -100)
+	{
+		std::cout<<"I should delete at"<<this->hero_bullet.getPosition().y<<std::endl;
+		return true;
+	}
+	else
+	{
+		return false ;
+	}
 }
 
 Bullet::~Bullet() {

@@ -15,7 +15,7 @@ public:
 	Hero();
 	sf::Texture myHero;
 	sf::Sprite hero;
-	std::vector<Bullet*> heroBullet;	//test
+	std::queue<Bullet*> heroBullet;
 	int isOverBound(int offsetX);
 	void loadMyhero();
 	sf::Sprite getHero();		//返回 飞机
@@ -23,7 +23,9 @@ public:
 	void moveRight();			//移动
 //	void fire(sf::RenderWindow* windows);				//开火
 	void isFire();
-	std::vector<Bullet*> fire();
+	std::queue<Bullet*> fire();
+//	int heroBulletCount;
+	void addHeroBullet();
 	virtual ~Hero();
 };
 

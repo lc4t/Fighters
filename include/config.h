@@ -3,6 +3,10 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include <SFML/System.hpp>
+#include <cstdlib>
+#include <iostream>
+#include <queue>
 /***********global    ***********/
 
 const int GAME_HEIGHT = 600;
