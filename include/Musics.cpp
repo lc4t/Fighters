@@ -27,6 +27,6 @@ void Musics::backgroundMusicPlay()
 	backgroundMusic.play();
 }
 Musics::~Musics() {
-	// TODO Auto-generated destructor stub
+
 }
 

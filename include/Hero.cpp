@@ -8,12 +8,11 @@
 #include <Hero.h>
 #include <iostream>
 #include "Bullet.h"
-Hero::Hero() {
-	// TODO Auto-generated constructor stub
+Hero::Hero()
+{
 	loadMyhero();
 	this->hero.setPosition(sf::Vector2f(150, 480));
 	this->hero.setTexture(this->myHero);
-//	heroBulletCount = 1;
 }
 
 
@@ -65,22 +64,11 @@ void Hero::moveRight()
 	}
 
 }
-//void Hero::fire(sf::RenderWindow* windows)
-//{
-//	this->heroBullet.push_back(new Bullet(this->hero.getPosition()));
-//	for (std::vector<Bullet*>::iterator i = heroBullet.begin();i != heroBullet.end(); i++)
-//	{
-//		//window->draw(i.draw());
-//		std::cout<<"print bullet"<<std::endl;
-//		windows->draw((*i)->drawBullet());
-//	}
-//
-//}
+
 
 std::vector<Bullet*> Hero::fire()
 
 {
-//	this->heroBullet.push_back(new Bullet(this->hero.getPosition()));
 	return this->heroBullet;
 }
 
@@ -89,10 +77,7 @@ void Hero::isFire()
 	this->heroBullet.push_back(new Bullet(this->hero.getPosition()));
 }
 
-//void Hero::addHeroBullet()
-//{
-//	heroBulletCount++;
-//}
+
 
 
 Hero::~Hero() {

@@ -36,7 +36,6 @@ bool Bullet::isShouldDelete()
 {
 	if (this->hero_bullet.getPosition().y <= 0)
 	{
-//		std::cout<<"I should delete at"<<this->hero_bullet.getPosition().y<<std::endl;
 		return true;
 	}
 	else

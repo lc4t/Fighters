@@ -9,11 +9,9 @@
 #define INCLUDE_OBJECT_H_
 #include "config.h"
 //返回物体作为参数
-class Object:public sf::Sprite {
+class Object {
 public:
 	Object();
-
-//	static sf::Texture BULLET;
 
 
 	virtual ~Object();

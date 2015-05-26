@@ -77,7 +77,6 @@ void Stage::drawAddBullet()
 			i++;
 		}
 	}
-//	std::cout<<"Size: "<<heroBullet.size()<<std::endl;
 	std::vector<Bullet*>(heroBullet).swap(heroBullet);
 
 }
