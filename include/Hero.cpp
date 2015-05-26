@@ -78,6 +78,7 @@ void Hero::moveRight()
 //}
 
 std::vector<Bullet*> Hero::fire()
+
 {
 //	this->heroBullet.push_back(new Bullet(this->hero.getPosition()));
 	return this->heroBullet;
@@ -85,12 +86,7 @@ std::vector<Bullet*> Hero::fire()
 
 void Hero::isFire()
 {
-//	if (heroBulletCount > 0)
-//	{
-		this->heroBullet.push_back(new Bullet(this->hero.getPosition()));
-//		heroBulletCount--;
-//	}
-
+	this->heroBullet.push_back(new Bullet(this->hero.getPosition()));
 }
 
 //void Hero::addHeroBullet()

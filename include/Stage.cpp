@@ -61,6 +61,27 @@ void Stage::heroControl()
 	}
 }
 
+void Stage::drawAddBullet()
+{
+	std::vector<Bullet*> heroBullet = hero.fire();	//draw 子弹
+	for (std::vector<Bullet*>::iterator i = heroBullet.begin() ;i != heroBullet.end() && heroBullet.size() != 0;)
+	{
+		if ((*i)->isShouldDelete())
+		{
+			i = heroBullet.erase(i);
+		}
+		else
+		{
+			std::cout<<"print bullet"<<std::endl;
+			this->getWindow()->draw((*i)->drawBullet());
+			i++;
+		}
+	}
+//	std::cout<<"Size: "<<heroBullet.size()<<std::endl;
+	std::vector<Bullet*>(heroBullet).swap(heroBullet);
+
+}
+
 void Stage::draw()
 {
 	sf::Event event;
@@ -82,49 +103,17 @@ void Stage::draw()
 			this->getWindow()->clear();
 			this->getWindow()->draw(this->BGI.getBG());	//加载背景图片
 			this->getWindow()->draw(this->hero.getHero());	//飞机
-			std::vector<Bullet*> heroBullet = hero.fire();	//draw 子弹
-
-			if (!heroBullet.empty())
-			{
-				std::vector<Bullet*>::iterator test = heroBullet.begin();
-				if ((*test)->isShouldDelete())
-				{
-					heroBullet.erase(test);
-//					continue;
-				}
-				for (std::vector<Bullet*>::iterator i = heroBullet.begin();i != heroBullet.end(); i++)
-				{
-					std::cout<<"print bullet"<<std::endl;
-					this->getWindow()->draw((*i)->drawBullet());
-				}
-
-			}
-
-
-//			for (std::vector<Bullet*>::iterator i = heroBullet.begin();i != heroBullet.end(); i++)
-//				{
-//					std::vector<Bullet*>::iterator test = heroBullet.begin();
-//					if (heroBullet.empty())
-//					{
-//						break;
-//					}
-////					else  if ((*i)->isShouldDelete())
-////					{
-////						i = heroBullet.erase(i);
-////					}
-//					else
-//					{
-//						std::cout<<"print bullet"<<std::endl;
-//						this->getWindow()->draw((*i)->drawBullet());
-// 					}
-//
-//				}
 		}
+
+		drawAddBullet();
 
 		this->getWindow()->display();
 	}
 
+
 }
+
+
 
 sf::RenderWindow* Stage::getWindow()
 {

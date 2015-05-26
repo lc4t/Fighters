@@ -25,7 +25,7 @@ public:
 
 	void setBGI(BackgroundImage &BGI);
 	void setHero(Hero &hero);
-
+	void drawAddBullet();
 	sf::RenderWindow* window;
 	sf::RenderWindow* getWindow();
 	void heroControl();
