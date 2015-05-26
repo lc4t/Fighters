@@ -12,20 +12,30 @@ Musics::Musics()
 
 }
 
-void Musics::loadBGM()
-{
-	if (!backgroundMusic.openFromFile(bgmPath))
-		 {
-			std::cout<<"Error to load backgroundMusic"<<std::endl;
-		 }
-}
+
 
 void Musics::backgroundMusicPlay()
 {
-	loadBGM();
+	if (!backgroundMusic.openFromFile(bgmPath))
+	 {
+		std::cout<<"Error to load backgroundMusic"<<std::endl;
+	 }
 	backgroundMusic.setLoop(true);	// 循环播放
 	backgroundMusic.play();
 }
+
+void Musics::playBulletShootSound()
+{
+	if (!bulletShootSound.openFromFile(bulletShootSoundPath))
+	 {
+		std::cout<<"Can't load bulletShootSound"<<std::endl;
+	 }
+	bulletShootSound.play();
+
+}
+
+
+
 Musics::~Musics() {
 
 }

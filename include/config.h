@@ -6,7 +6,7 @@
 #include <SFML/System.hpp>
 #include <cstdlib>
 #include <iostream>
-#include <queue>
+#include <vector>
 /***********global    ***********/
 
 const int GAME_HEIGHT = 600;
@@ -26,11 +26,13 @@ const std::string bgiPath = imageBasePath + "background.png";
 const std::string gameOverImagePath = imageBasePath + "gameover.png";
 const std::string heroPath = imageBasePath + "hero.png";
 const std::string bulletPath = imageBasePath + "heroBullet.png";
+const std::string enemyPlanePath1 = imageBasePath + "enemyPlane1.png";
 
 /***********music path***********/
 
 const std::string bgmPath = soundBasePath + "game_music.ogg";
 const std::string gameOverMusicPath = soundBasePath + "game_over.ogg";
+const std::string bulletShootSoundPath = soundBasePath + "bullet.ogg";
 
 /***********font path ***********/
 

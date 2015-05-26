@@ -12,7 +12,7 @@
 Stage::Stage()
 {
 	this->window = new sf::RenderWindow(sf::VideoMode(GAME_WIDTH, GAME_HEIGHT), GAME_NAME);
-	this->backgroundMusic.backgroundMusicPlay();
+	this->musics.backgroundMusicPlay();
 	this->heroBulletAdder = 0;
 }
 
@@ -50,7 +50,9 @@ void Stage::heroControl()
 			if (this->heroBulletAdder == 0)
 			{
 				std::cout<<"Fire!!"<<std::endl;
+				musics.playBulletShootSound();
 				hero.isFire();
+
 				++this->heroBulletAdder %= heroFireSpeed;
 			}
 			else
@@ -72,7 +74,7 @@ void Stage::drawAddBullet()
 		}
 		else
 		{
-			std::cout<<"print bullet"<<std::endl;
+//			std::cout<<"print bullet"<<std::endl;
 			this->getWindow()->draw((*i)->drawBullet());
 			i++;
 		}

@@ -20,7 +20,7 @@ public:
 	int heroBulletAdder;
 	std::vector<Bullet*> bullets;
 	BackgroundImage BGI;
-	Musics backgroundMusic;
+	Musics musics;
 	Hero hero;
 
 	void setBGI(BackgroundImage &BGI);

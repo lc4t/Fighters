@@ -12,8 +12,15 @@ Object::Object() {
 
 }
 
+void Object::planeAutoMoveDown(sf::Sprite &plane)
+{
+	plane.move(0,5);
+}
 
-
+void Object::planeSetPosition(sf::Sprite &plane, sf::Vector2f position)
+{
+	plane.setPosition(position);
+}
 
 Object::~Object() {
 	// TODO Auto-generated destructor stub

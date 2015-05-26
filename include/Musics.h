@@ -11,9 +11,11 @@
 class Musics {
 public:
 	sf::Music backgroundMusic;
+	sf::Music bulletShootSound;
+
 	Musics();
-	void loadBGM();
 	void backgroundMusicPlay();
+	void playBulletShootSound();
 	virtual ~Musics();
 };
 
