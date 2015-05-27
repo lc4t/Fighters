@@ -12,8 +12,6 @@ Musics::Musics()
 
 }
 
-
-
 void Musics::backgroundMusicPlay()
 {
 	if (!backgroundMusic.openFromFile(bgmPath))
@@ -34,9 +32,8 @@ void Musics::playBulletShootSound()
 
 }
 
-
-
-Musics::~Musics() {
+Musics::~Musics()
+{
 
 }
 

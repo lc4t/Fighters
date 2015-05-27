@@ -14,7 +14,7 @@ Object::Object() {
 
 void Object::planeAutoMoveDown(sf::Sprite &plane)
 {
-	plane.move(0,5);
+	plane.move(0, enemyMoveSpeed1);	// round 1
 }
 
 void Object::planeSetPosition(sf::Sprite &plane, sf::Vector2f position)

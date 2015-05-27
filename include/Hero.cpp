@@ -66,6 +66,7 @@ void Hero::moveRight()
 }
 
 
+
 std::vector<Bullet*> Hero::fire()
 
 {

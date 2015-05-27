@@ -22,6 +22,18 @@ void Enemy::setEnemyPlanePosition()
 
 }
 
+bool Enemy::isShouldDelete()
+{
+	//TEST
+	return false;
+}
+
+sf::Sprite Enemy::drawEnemy()
+{
+	planeAutoMoveDown(this->enemyPlane);
+	return this->enemyPlane;
+}
+
 Enemy::~Enemy() {
 	// TODO Auto-generated destructor stub
 }

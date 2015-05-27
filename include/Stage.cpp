@@ -21,7 +21,6 @@ Stage::~Stage()
 	delete this->window;
 }
 
-
 void Stage::setBGI(BackgroundImage &BGI)
 {
 	this->BGI = BGI;
@@ -32,6 +31,13 @@ void Stage::setHero(Hero &hero)
 	this->hero = hero;
 }
 
+
+//void Stage::isTimeOut(float testTime)
+//{
+//	this->enemyControlTimer.restart();
+//	std::cout <<this->thisEnemyTime.asSeconds()<< std::endl;
+//}
+
 void Stage::heroControl()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
@@ -39,6 +45,12 @@ void Stage::heroControl()
 		std::cout<<"Left"<<std::endl;
 		this->hero.moveLeft();
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))	//WARNING: TEST HERE
+		{
+			std::cout<<"Add an Enemy"<<std::endl;
+
+			enemyAdder();
+		}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
@@ -52,7 +64,6 @@ void Stage::heroControl()
 				std::cout<<"Fire!!"<<std::endl;
 				musics.playBulletShootSound();
 				hero.isFire();
-
 				++this->heroBulletAdder %= heroFireSpeed;
 			}
 			else
@@ -74,7 +85,6 @@ void Stage::drawAddBullet()
 		}
 		else
 		{
-//			std::cout<<"print bullet"<<std::endl;
 			this->getWindow()->draw((*i)->drawBullet());
 			i++;
 		}
@@ -83,8 +93,31 @@ void Stage::drawAddBullet()
 
 }
 
+void Stage::drawEnemies()
+{
+	//enemies
+	for (std::vector<Enemy*>::iterator i = enemies.begin() ;i != enemies.end() && enemies.size() != 0;)
+	{
+		if ((*i)->isShouldDelete())
+		{
+			i = enemies.erase(i);
+		}
+		else
+		{
+			this->getWindow()->draw((*i)->drawEnemy());
+			i++;
+		}
+	}
+	std::vector<Enemy*>(enemies).swap(enemies);	//更新内存
+
+}
+
+
 void Stage::draw()
 {
+
+
+	////
 	sf::Event event;
 	++this->heroBulletAdder %= heroFireSpeed;
 	while (this->getWindow()->isOpen())
@@ -107,6 +140,7 @@ void Stage::draw()
 		}
 
 		drawAddBullet();
+		drawEnemies();
 
 		this->getWindow()->display();
 	}
@@ -114,7 +148,11 @@ void Stage::draw()
 
 }
 
-
+void Stage::enemyAdder()
+{
+	//test press A
+	this->enemies.push_back(new Enemy());
+}
 
 sf::RenderWindow* Stage::getWindow()
 {

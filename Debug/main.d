@@ -6,6 +6,7 @@ main.d: ../main.cpp /home/lc4t/Documents/git/Fighters/include/Musics.h \
  /home/lc4t/Documents/git/Fighters/include/Hero.h \
  /home/lc4t/Documents/git/Fighters/include/Object.h \
  /home/lc4t/Documents/git/Fighters/include/Bullet.h \
+ /home/lc4t/Documents/git/Fighters/include/Enemy.h \
  /home/lc4t/Documents/git/Fighters/include/BackgroundImage.h \
  /home/lc4t/Documents/git/Fighters/include/Hero.h \
  /home/lc4t/Documents/git/Fighters/include/config.h
@@ -25,6 +26,8 @@ main.d: ../main.cpp /home/lc4t/Documents/git/Fighters/include/Musics.h \
 /home/lc4t/Documents/git/Fighters/include/Object.h:
 
 /home/lc4t/Documents/git/Fighters/include/Bullet.h:
+
+/home/lc4t/Documents/git/Fighters/include/Enemy.h:
 
 /home/lc4t/Documents/git/Fighters/include/BackgroundImage.h:
 

@@ -14,23 +14,31 @@
 #include "Hero.h"
 #include "Bullet.h"
 #include <vector>
+#include "Enemy.h"
 class Stage{
 public:
 	Stage();
-	int heroBulletAdder;
-	std::vector<Bullet*> bullets;
+	sf::RenderWindow* window;
+	sf::RenderWindow* getWindow();
+	//timer
+
+	bool isTimeOut(float testTime);
 	BackgroundImage BGI;
 	Musics musics;
 	Hero hero;
+	int heroBulletAdder;
+////////////////////////////////////////////////
+	std::vector<Enemy*> enemies;	// 敌机
+	void enemyAdder();
+	void drawEnemies();
+///////////////////////////////////////////////
 
 	void setBGI(BackgroundImage &BGI);
 	void setHero(Hero &hero);
 	void drawAddBullet();
-	sf::RenderWindow* window;
-	sf::RenderWindow* getWindow();
 	void heroControl();
 	void draw();
-	std::vector<Bullet*> bullet;
+
 	virtual ~Stage();
 
 };
