@@ -13,7 +13,7 @@ class Timer
 public:
 	Timer();
 	sf::Clock enemyControlTimer;
-	sf::Time thisEnemyTime = enemyControlTimer.getElapsedTime();
+	sf::Time thisEnemyTime;
 	virtual ~Timer();
 };
 
