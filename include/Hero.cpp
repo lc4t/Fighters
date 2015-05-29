@@ -35,7 +35,6 @@ int Hero::isOverBound(int offsetX)
 {
 	sf::Vector2f heroPosition = this->hero.getPosition();
 	float heroPositionX = heroPosition.x;
-	std::cout<<"I am at X: "<<heroPositionX<<"Y: "<<heroPosition.y<<std::endl;
 	if ( heroPositionX + offsetX >= -41 && heroPositionX + offsetX <= 341)
 	{
 		return 1;	//yes can move

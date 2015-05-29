@@ -8,7 +8,6 @@
 #include <Stage.h>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include <iostream>
 Stage::Stage()
 {
 	this->window = new sf::RenderWindow(sf::VideoMode(GAME_WIDTH, GAME_HEIGHT), GAME_NAME);
@@ -42,26 +41,17 @@ void Stage::heroControl()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
-		std::cout<<"Left"<<std::endl;
 		this->hero.moveLeft();
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))	//WARNING: TEST HERE
-		{
-			std::cout<<"Add an Enemy"<<std::endl;
-
-			enemyAdder();
-		}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
-		std::cout<<"Right"<<std::endl;
 		this->hero.moveRight();
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
 			if (this->heroBulletAdder == 0)
 			{
-				std::cout<<"Fire!!"<<std::endl;
 				musics.playBulletShootSound();
 				hero.isFire();
 				++this->heroBulletAdder %= heroFireSpeed;
@@ -95,7 +85,6 @@ void Stage::drawAddBullet()
 
 void Stage::drawEnemies()
 {
-	//enemies
 	for (std::vector<Enemy*>::iterator i = enemies.begin() ;i != enemies.end() && enemies.size() != 0;)
 	{
 		if ((*i)->isShouldDelete())
@@ -112,12 +101,18 @@ void Stage::drawEnemies()
 
 }
 
+void Stage::addEnemy()
+{
+	if (random() % 1200 ==0)
+	{
+		std::cout<<"Add an Enemy"<<std::endl;
+		enemyAdder();
+	}
+}
 
 void Stage::draw()
 {
 
-
-	////
 	sf::Event event;
 	++this->heroBulletAdder %= heroFireSpeed;
 	while (this->getWindow()->isOpen())
@@ -138,8 +133,10 @@ void Stage::draw()
 			this->getWindow()->draw(this->BGI.getBG());	//加载背景图片
 			this->getWindow()->draw(this->hero.getHero());	//飞机
 		}
-
+		std::vector<Bullet*> heroBullet = hero.fire();
+		Died dieTest(enemies,heroBullet);
 		drawAddBullet();
+		addEnemy();
 		drawEnemies();
 
 		this->getWindow()->display();
@@ -150,8 +147,8 @@ void Stage::draw()
 
 void Stage::enemyAdder()
 {
-	//test press A
-	this->enemies.push_back(new Enemy());
+
+	this->enemies.push_back(new Enemy(random() % 330));
 }
 
 sf::RenderWindow* Stage::getWindow()

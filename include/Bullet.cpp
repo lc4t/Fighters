@@ -16,6 +16,7 @@ Bullet::Bullet(sf::Vector2f heroPosition)
 	sf::Sprite hero_bullet(this->heroBullet);
 	hero_bullet.setPosition(heroPosition);
 	this->hero_bullet = hero_bullet;
+	this->isKilled = false;
 
 }
 
@@ -34,7 +35,7 @@ sf::Sprite Bullet::drawBullet()
 
 bool Bullet::isShouldDelete()
 {
-	if (this->hero_bullet.getPosition().y <= 0)
+	if (this->hero_bullet.getPosition().y <= 0 || this->isKilled)
 	{
 		return true;
 	}
@@ -42,6 +43,11 @@ bool Bullet::isShouldDelete()
 	{
 		return false ;
 	}
+}
+
+void Bullet::beKilled()
+{
+	this->isKilled = true;
 }
 
 Bullet::~Bullet() {

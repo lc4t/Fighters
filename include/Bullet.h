@@ -13,11 +13,12 @@ class Bullet:public Object{
 public:
 	sf::Texture heroBullet;
 	sf::Sprite hero_bullet;
-	Bullet();
+	bool isKilled;
 	Bullet(sf::Vector2f heroPosition);
 	sf::Sprite drawBullet();
 	void bulletAutoMove();
 	bool isShouldDelete();
+	void beKilled();
 	virtual ~Bullet();
 };
 

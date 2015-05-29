@@ -7,13 +7,14 @@
 
 #ifndef INCLUDE_TIMER_H_
 #define INCLUDE_TIMER_H_
-
+#include "config.h"
+#include <ctime>
 class Timer
 {
 public:
 	Timer();
-	sf::Clock enemyControlTimer;
-	sf::Time thisEnemyTime;
+	time_t startTime;
+	int getRunningTime();
 	virtual ~Timer();
 };
 

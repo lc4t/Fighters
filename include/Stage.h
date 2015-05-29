@@ -15,14 +15,15 @@
 #include "Bullet.h"
 #include <vector>
 #include "Enemy.h"
+#include "Timer.h"
+#include "Died.h"
 class Stage{
 public:
 	Stage();
 	sf::RenderWindow* window;
 	sf::RenderWindow* getWindow();
 	//timer
-
-	bool isTimeOut(float testTime);
+	Timer timer;
 	BackgroundImage BGI;
 	Musics musics;
 	Hero hero;
@@ -36,6 +37,7 @@ public:
 	void setBGI(BackgroundImage &BGI);
 	void setHero(Hero &hero);
 	void drawAddBullet();
+	void addEnemy();
 	void heroControl();
 	void draw();
 
