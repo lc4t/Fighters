@@ -7,8 +7,13 @@
 
 #include <Enemy.h>
 
-Enemy::Enemy(double x) {
-	this->enemy_plane.loadFromFile(enemyPlanePath1);
+Enemy::Enemy(double x,int type = 1) {
+	this->type = type;
+	switch (type)
+	{
+		case 1:this->enemy_plane.loadFromFile(enemyPlanePath1);
+		break;
+	}
 	sf::Sprite enemyPlane(this->enemy_plane);
 	this->enemyPlane = enemyPlane;
 	sf::Vector2f enemyPlanePosition = sf::Vector2f(x,0);
@@ -34,6 +39,15 @@ sf::Sprite Enemy::drawEnemy()
 	return this->enemyPlane;
 }
 
+sf::Vector2f Enemy::getPosition()
+{
+	return this->enemyPlane.getPosition();
+}
+
+int Enemy::getType()
+{
+	return this->type;
+}
 Enemy::~Enemy() {
 	// TODO Auto-generated destructor stub
 }

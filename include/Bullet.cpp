@@ -7,10 +7,15 @@
 
 #include <Bullet.h>
 
-Bullet::Bullet(sf::Vector2f heroPosition)
+Bullet::Bullet(sf::Vector2f heroPosition, int type = 1)
 {
-
-	this->heroBullet.loadFromFile(bulletPath);
+	this->type = type;
+	switch (type)
+	{
+		case 1:
+			this->heroBullet.loadFromFile(bulletPath);
+		break;
+	}
 	heroPosition.x += 45;
 	heroPosition.y -= 13;
 	sf::Sprite hero_bullet(this->heroBullet);
@@ -49,6 +54,17 @@ void Bullet::beKilled()
 {
 	this->isKilled = true;
 }
+
+int Bullet::getType()
+{
+	return this->type;
+}
+
+sf::Vector2f Bullet::getPosition()
+{
+	return this->hero_bullet.getPosition();
+}
+
 
 Bullet::~Bullet() {
 	// TODO Auto-generated destructor stub

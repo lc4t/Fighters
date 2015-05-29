@@ -13,10 +13,12 @@ class Enemy:public Object {
 public:
 	sf::Texture enemy_plane;
 	sf::Sprite enemyPlane;
-
+	int type;
 	bool isShouldDelete();
 	sf::Sprite drawEnemy();
-	Enemy(double x);
+	sf::Vector2f getPosition();
+	int getType();
+	Enemy(double x,int type = 1);
 
 	virtual ~Enemy();
 };
