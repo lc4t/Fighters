@@ -74,7 +74,7 @@ std::vector<Bullet*> Hero::fire()
 
 void Hero::isFire()
 {
-	this->heroBullet.push_back(new Bullet(this->hero.getPosition()));
+	this->heroBullet.push_back(new Bullet(this->hero.getPosition(),1));
 }
 
 

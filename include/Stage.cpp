@@ -148,7 +148,7 @@ void Stage::draw()
 void Stage::enemyAdder()
 {
 
-	this->enemies.push_back(new Enemy(random() % 330));
+	this->enemies.push_back(new Enemy(random() % 330, 1));
 }
 
 sf::RenderWindow* Stage::getWindow()

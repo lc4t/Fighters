@@ -28,6 +28,7 @@ const std::string gameOverImagePath = imageBasePath + "gameover.png";
 const std::string heroPath = imageBasePath + "hero.png";
 const std::string bulletPath = imageBasePath + "heroBullet.png";
 const std::string enemyPlanePath1 = imageBasePath + "enemyPlane1.png";
+const std::string enemyPlanePath2 = imageBasePath + "enemyPlane2.png";
 
 /***********music path***********/
 
@@ -42,3 +43,22 @@ const std::string fontPath = fontBasePath + "STHeiti Light.ttc";
 
 
 #endif//config file
+
+
+
+
+/*
+background -- gameover
+
+heroReady -- hero -- heroAttack1 -- heroAttack2 -- heroAttack3
+heroBullet1 -- heroBullet2 -- heroBullet3
+enemyPlane1 -- enemyPlane1Attack1 -- enemyPlane1Attack2
+enemyPlane2 --
+enemyPlane3 --
+enemyPlane4 -- enemyPlane4Attack1 -- enemyPlane4Attack2 -- enemyPlane4Attack3 -- enemyPlane4Attack4 --
+boom1
+boom2
+
+explode
+
+ */

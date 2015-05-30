@@ -7,7 +7,7 @@
 
 #include <Bullet.h>
 
-Bullet::Bullet(sf::Vector2f heroPosition, int type = 1)
+Bullet::Bullet(sf::Vector2f heroPosition, int type)
 {
 	this->type = type;
 	switch (type)

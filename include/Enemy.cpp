@@ -7,7 +7,7 @@
 
 #include <Enemy.h>
 
-Enemy::Enemy(double x,int type = 1) {
+Enemy::Enemy(double x,int type) {
 	this->type = type;
 	switch (type)
 	{
@@ -18,6 +18,7 @@ Enemy::Enemy(double x,int type = 1) {
 	this->enemyPlane = enemyPlane;
 	sf::Vector2f enemyPlanePosition = sf::Vector2f(x,0);
 	planeSetPosition(this->enemyPlane, enemyPlanePosition);
+	this->isKilled = false;
 }
 
 
@@ -42,6 +43,11 @@ sf::Sprite Enemy::drawEnemy()
 sf::Vector2f Enemy::getPosition()
 {
 	return this->enemyPlane.getPosition();
+}
+
+void Enemy::beKilled()
+{
+	this->isKilled = true;
 }
 
 int Enemy::getType()

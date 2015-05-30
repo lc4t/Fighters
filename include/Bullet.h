@@ -11,11 +11,12 @@
 #include "config.h"
 class Bullet:public Object{
 public:
+	Bullet(sf::Vector2f heroPosition,int type);
 	sf::Texture heroBullet;
 	sf::Sprite hero_bullet;
 	int type;
 	bool isKilled;
-	Bullet(sf::Vector2f heroPosition,int type = 1);
+
 	sf::Sprite drawBullet();
 	void bulletAutoMove();
 	bool isShouldDelete();

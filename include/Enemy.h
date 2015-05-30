@@ -11,14 +11,17 @@
 #include "config.h"
 class Enemy:public Object {
 public:
+	Enemy(double x,int type);
 	sf::Texture enemy_plane;
 	sf::Sprite enemyPlane;
 	int type;
+	bool isKilled;
 	bool isShouldDelete();
 	sf::Sprite drawEnemy();
 	sf::Vector2f getPosition();
+	void beKilled();
 	int getType();
-	Enemy(double x,int type = 1);
+
 
 	virtual ~Enemy();
 };
