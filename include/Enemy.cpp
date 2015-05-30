@@ -25,13 +25,15 @@ Enemy::Enemy(double x,int type) {
 
 bool Enemy::isShouldDelete()
 {
-
-	if (this->enemyPlane.getPosition().y >= GAME_HEIGHT)
+	if (this->enemyPlane.getPosition().y >= GAME_HEIGHT || this->isKilled)
 	{
 		std::cout<<"Y:"<<enemyPlane.getPosition().y<<std::endl;
 		return true;
 	}
-	return false;
+	else
+	{
+		return false;
+	}
 }
 
 sf::Sprite Enemy::drawEnemy()

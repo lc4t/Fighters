@@ -13,7 +13,7 @@ Bullet::Bullet(sf::Vector2f heroPosition, int type)
 	switch (type)
 	{
 		case 1:
-			this->heroBullet.loadFromFile(bulletPath);
+			this->heroBullet.loadFromFile(bulletPath1);
 		break;
 	}
 	heroPosition.x += 45;

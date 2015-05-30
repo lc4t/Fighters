@@ -80,6 +80,7 @@ void Stage::drawAddBullet()
 		}
 	}
 	std::vector<Bullet*>(heroBullet).swap(heroBullet);
+//	std::cout<<heroBullet.size()<<std::endl;
 
 }
 
@@ -103,7 +104,7 @@ void Stage::drawEnemies()
 
 void Stage::addEnemy()
 {
-	if (random() % 1200 ==0)
+	if (random() % 1000 ==0)
 	{
 		std::cout<<"Add an Enemy"<<std::endl;
 		enemyAdder();
