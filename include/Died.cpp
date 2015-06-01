@@ -40,7 +40,7 @@ bool Died::isCrash(sf::Vector2f object1, int object1Type, sf::Vector2f object2, 
 					int crash1 = isUpLine(object1 + enemyPlane1LeftCrashPoint,object1 + enemyPlane1CenterCrashPoint,object2);
 					int crash2 = isUpLine(object1 + enemyPlane1CenterCrashPoint,object1 + enemyPlane1RightCrashPoint,object2);
 					int crash = crash1 + crash2;
-					std::cout<<crash<<std::endl;
+//					std::cout<<crash<<std::endl;
 					if (crash == 0x002)
 					{
 						return false;	// no need test again,not in this down
@@ -81,9 +81,10 @@ int Died::isUpLine(sf::Vector2f linePoint1, sf::Vector2f linePoint2, sf::Vector2
 
 		return NOT_IN_THIS_DOWN;
 	}
-	else if ((testPoint.y - linePoint2.y) / (linePoint1.x - linePoint2.x) - (testPoint.x - linePoint2.x) / (linePoint1.y - linePoint2.y) < 0)
+	else if ((testPoint.y - linePoint2.y) / (linePoint1.x - linePoint2.x) - (testPoint.x - linePoint2.x) / (linePoint1.y - linePoint2.y) < 0
+			&& (testPoint.y - linePoint2.y) / (linePoint1.x - linePoint2.x) - (testPoint.x - linePoint2.x) / (linePoint1.y - linePoint2.y) >= -0.1)
 	{
-		std::cout<<"Crash"<<std::endl;//someting wrong, should near
+		std::cout<<(testPoint.y - linePoint2.y) / (linePoint1.x - linePoint2.x) - (testPoint.x - linePoint2.x) / (linePoint1.y - linePoint2.y)<<std::endl;//someting wrong, should near
 		return YES;
 	}
 	else
