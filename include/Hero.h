@@ -22,7 +22,7 @@ public:
 	void moveLeft();
 	void moveRight();			//移动
 	void isFire();
-	std::vector<Bullet*> fire();
+	std::vector<Bullet*>& fire();
 	void addHeroBullet();
 	virtual ~Hero();
 };

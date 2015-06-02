@@ -12,10 +12,19 @@ class Musics {
 public:
 	sf::Music backgroundMusic;
 	sf::Music bulletShootSound;
-
+	sf::Music enemy1BeKilledSound;
+	int backgroundMusicVolume;
 	Musics();
 	void backgroundMusicPlay();
+	void backgroundMusicPause();
+	void backgroundMusicStop();
+	void backgroundMusicIncrease();
+	void backgroundMusicDecrease();
+
 	void playBulletShootSound();
+	void playEnemyBeKilledSound();
+
+	void stopSoundEffect();
 	virtual ~Musics();
 };
 

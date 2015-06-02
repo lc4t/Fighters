@@ -64,6 +64,31 @@ void Stage::heroControl()
 	}
 }
 
+void Stage::musicControl()
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Add))
+	{
+		this->musics.backgroundMusicIncrease();
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Subtract))
+	{
+		this->musics.backgroundMusicDecrease();
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F3))
+	{
+		this->musics.backgroundMusicPause();
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F4))
+	{
+		this->musics.backgroundMusicStop();
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F10))
+	{
+		this->musics.stopSoundEffect();
+	}
+
+}
+
 void Stage::drawAddBullet()
 {
 	std::vector<Bullet*> heroBullet = hero.fire();	//draw 子弹
@@ -88,7 +113,19 @@ void Stage::drawEnemies()
 {
 	for (std::vector<Enemy*>::iterator i = enemies.begin() ;i != enemies.end() && enemies.size() != 0;)
 	{
-		if ((*i)->isShouldDelete())
+		if ((*i)->getIsKilled() && (*i)->getExplodeTimes() > 0)
+		{
+			Explode explodeTemp;
+			explodeTemp.letExplode(i,1);
+			this->getWindow()->draw((*i)->drawEnemy());
+			i++;
+			if ((*i)->getExplodeTimes() == 9)
+			{
+				musics.playEnemyBeKilledSound();
+			}
+
+		}
+		else if ((*i)->isShouldDelete())
 		{
 			i = enemies.erase(i);
 		}
@@ -118,7 +155,6 @@ void Stage::draw()
 	++this->heroBulletAdder %= heroFireSpeed;
 	while (this->getWindow()->isOpen())
 	{
-
 		if (this->getWindow()->pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
@@ -126,9 +162,9 @@ void Stage::draw()
 				this->getWindow()->close();
 				std::exit(0);
 			}
-
 		}
 		heroControl();
+		musicControl();
 		{
 			this->getWindow()->clear();
 			this->getWindow()->draw(this->BGI.getBG());	//加载背景图片
@@ -139,7 +175,6 @@ void Stage::draw()
 		drawAddBullet();
 		addEnemy();
 		drawEnemies();
-
 		this->getWindow()->display();
 	}
 

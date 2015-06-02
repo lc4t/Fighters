@@ -66,8 +66,7 @@ void Hero::moveRight()
 
 
 
-std::vector<Bullet*> Hero::fire()
-
+std::vector<Bullet*>& Hero::fire()
 {
 	return this->heroBullet;
 }

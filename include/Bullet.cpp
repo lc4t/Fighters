@@ -60,6 +60,10 @@ int Bullet::getType()
 	return this->type;
 }
 
+bool Bullet::getIsKilled()
+{
+	return this->isKilled;
+}
 sf::Vector2f Bullet::getPosition()
 {
 	return this->hero_bullet.getPosition();

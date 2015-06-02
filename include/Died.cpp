@@ -40,14 +40,14 @@ bool Died::isCrash(sf::Vector2f object1, int object1Type, sf::Vector2f object2, 
 					int crash1 = isUpLine(object1 + enemyPlane1LeftCrashPoint,object1 + enemyPlane1CenterCrashPoint,object2);
 					int crash2 = isUpLine(object1 + enemyPlane1CenterCrashPoint,object1 + enemyPlane1RightCrashPoint,object2);
 					int crash = crash1 + crash2;
-//					std::cout<<crash<<std::endl;
 					if (crash == 0x002)
 					{
 						return false;	// no need test again,not in this down
 					}
 					else if (crash >= 0x100)
 					{
-						return true;
+
+						return true;//crash
 					}
 					else
 					{

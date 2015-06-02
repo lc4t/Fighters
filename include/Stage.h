@@ -17,6 +17,7 @@
 #include "Enemy.h"
 #include "Timer.h"
 #include "Died.h"
+#include "Explode.h"
 class Stage{
 public:
 	Stage();
@@ -39,6 +40,7 @@ public:
 	void drawAddBullet();
 	void addEnemy();
 	void heroControl();
+	void musicControl();
 	void draw();
 
 	virtual ~Stage();

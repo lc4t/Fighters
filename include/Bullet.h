@@ -22,6 +22,7 @@ public:
 	bool isShouldDelete();
 	int getType();
 	void beKilled();
+	bool getIsKilled();
 	sf::Vector2f getPosition();
 	virtual ~Bullet();
 };

@@ -11,14 +11,17 @@ Enemy::Enemy(double x,int type) {
 	this->type = type;
 	switch (type)
 	{
-		case 1:this->enemy_plane.loadFromFile(enemyPlanePath1);
+		case 1:
+			this->enemy_plane.loadFromFile(enemyPlanePath1);
+			this->explodeTimes = 10;
 		break;
 	}
 	sf::Sprite enemyPlane(this->enemy_plane);
 	this->enemyPlane = enemyPlane;
-	sf::Vector2f enemyPlanePosition = sf::Vector2f(x,0);
-	planeSetPosition(this->enemyPlane, enemyPlanePosition);
+	this->enemyPlanePosition = sf::Vector2f(x,0);
+	planeSetPosition(this->enemyPlane, this->enemyPlanePosition);
 	this->isKilled = false;
+
 }
 
 
@@ -50,6 +53,21 @@ sf::Vector2f Enemy::getPosition()
 void Enemy::beKilled()
 {
 	this->isKilled = true;
+}
+
+bool Enemy::getIsKilled()
+{
+	return this->isKilled;
+}
+
+int Enemy::getExplodeTimes()
+{
+	return this->explodeTimes;
+}
+
+void Enemy::decreaseExplodeTimes()
+{
+	this->explodeTimes--;
 }
 
 int Enemy::getType()
