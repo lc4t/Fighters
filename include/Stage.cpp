@@ -105,8 +105,6 @@ void Stage::drawAddBullet()
 		}
 	}
 	std::vector<Bullet*>(heroBullet).swap(heroBullet);
-//	std::cout<<heroBullet.size()<<std::endl;
-
 }
 
 void Stage::drawEnemies()
@@ -115,15 +113,15 @@ void Stage::drawEnemies()
 	{
 		if ((*i)->getIsKilled() && (*i)->getExplodeTimes() > 0)
 		{
+			this->show.socerAdder(1);
 			Explode explodeTemp;
 			explodeTemp.letExplode(i,1);
 			this->getWindow()->draw((*i)->drawEnemy());
-			i++;
 			if ((*i)->getExplodeTimes() == 9)
 			{
 				musics.playEnemyBeKilledSound();
 			}
-
+			i++;
 		}
 		else if ((*i)->isShouldDelete())
 		{
@@ -141,12 +139,19 @@ void Stage::drawEnemies()
 
 void Stage::addEnemy()
 {
-	if (random() % 1000 ==0)
+	if (random() % EnemyAddSpeed ==0)
 	{
 		std::cout<<"Add an Enemy"<<std::endl;
 		enemyAdder();
 	}
 }
+
+void Stage::drawShow()
+{
+
+	this->getWindow()->draw(this->show.getScoreText());
+}
+
 
 void Stage::draw()
 {
@@ -174,6 +179,7 @@ void Stage::draw()
 		Died dieTest(enemies,heroBullet);
 		drawAddBullet();
 		addEnemy();
+		drawShow();
 		drawEnemies();
 		this->getWindow()->display();
 	}

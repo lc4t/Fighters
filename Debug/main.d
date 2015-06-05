@@ -10,6 +10,7 @@ main.d: ../main.cpp /home/lc4t/Documents/git/Fighters/include/Musics.h \
  /home/lc4t/Documents/git/Fighters/include/Timer.h \
  /home/lc4t/Documents/git/Fighters/include/Died.h \
  /home/lc4t/Documents/git/Fighters/include/Explode.h \
+ /home/lc4t/Documents/git/Fighters/include/Show.h \
  /home/lc4t/Documents/git/Fighters/include/BackgroundImage.h \
  /home/lc4t/Documents/git/Fighters/include/Hero.h \
  /home/lc4t/Documents/git/Fighters/include/config.h
@@ -37,6 +38,8 @@ main.d: ../main.cpp /home/lc4t/Documents/git/Fighters/include/Musics.h \
 /home/lc4t/Documents/git/Fighters/include/Died.h:
 
 /home/lc4t/Documents/git/Fighters/include/Explode.h:
+
+/home/lc4t/Documents/git/Fighters/include/Show.h:
 
 /home/lc4t/Documents/git/Fighters/include/BackgroundImage.h:
 

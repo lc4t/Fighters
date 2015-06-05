@@ -14,8 +14,11 @@ public:
 
 	sf::Text scoreText;
 	int score;
+	int lastScore;
 	Show();
 	sf::Text& getScoreText();
+	std::string int2string(int num);
+	void socerAdder(int type);
 	virtual ~Show();
 };
 

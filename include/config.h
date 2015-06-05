@@ -14,7 +14,7 @@ const int GAME_WIDTH =	400;
 const std::string GAME_NAME = "Fighters";
 const int heroFireSpeed = 25;
 const float enemyMoveSpeed1 = 0.5f;
-
+const int EnemyAddSpeed = 700;
 /***********resources ***********/
 
 const std::string imageBasePath = "resources/image/";

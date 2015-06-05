@@ -18,6 +18,7 @@
 #include "Timer.h"
 #include "Died.h"
 #include "Explode.h"
+#include "Show.h"
 class Stage{
 public:
 	Stage();
@@ -28,6 +29,7 @@ public:
 	BackgroundImage BGI;
 	Musics musics;
 	Hero hero;
+	Show show;
 	int heroBulletAdder;
 ////////////////////////////////////////////////
 	std::vector<Enemy*> enemies;	// 敌机
@@ -41,6 +43,8 @@ public:
 	void addEnemy();
 	void heroControl();
 	void musicControl();
+	void drawShow();
+
 	void draw();
 
 	virtual ~Stage();

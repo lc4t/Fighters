@@ -57,12 +57,6 @@ I use eclipse,so add the libraries at Plane ->Properties->C/C++ Build -> Setting
 Then,test it.
 Works!
 
-- main.cpp 主程序
-- config.h 存放常量,配置文件
-- Stage
-- backgroundImage
-- Musics
-- Object:
-- 	Hero
-- 	Bullet
 
+//遇到两个飞机同时    在第一个飞机消失的时候第二个被炸
+// 炸了第一个 又出来一个 第二个突然消失
