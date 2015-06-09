@@ -9,15 +9,27 @@
 
 Bullet::Bullet(sf::Vector2f heroPosition, int type)
 {
+
 	this->type = type;
 	switch (type)
 	{
 		case 1:
+		{
 			this->heroBullet.loadFromFile(bulletPath1);
-		break;
+			heroPosition.x += 45;
+			heroPosition.y -= 13;
+			break;
+		}
+		case 2:
+		{
+			this->heroBullet.loadFromFile(bulletPath2);
+			heroPosition.x += 21;
+			heroPosition.y += 26;
+			break;
+		}
+
 	}
-	heroPosition.x += 45;
-	heroPosition.y -= 13;
+
 	sf::Sprite hero_bullet(this->heroBullet);
 	hero_bullet.setPosition(heroPosition);
 	this->hero_bullet = hero_bullet;
@@ -28,7 +40,19 @@ Bullet::Bullet(sf::Vector2f heroPosition, int type)
 
 void Bullet::bulletAutoMove()
 {
-		hero_bullet.move(0,-5);
+	switch(this->type)
+	{
+		case 1:
+		{
+			hero_bullet.move(0,-5);
+			break;
+		}
+		case 2:// enemy1's bullets
+		{
+			hero_bullet.move(0,1);
+		}
+	}
+
 }
 
 

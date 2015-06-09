@@ -43,8 +43,8 @@ public:
 	void addEnemy();
 	void heroControl();
 	void musicControl();
-	void drawShow();
-
+	void drawShow();			// score
+	void drawEnemysBullets();	// enemy's bullets
 	void draw();
 
 	virtual ~Stage();

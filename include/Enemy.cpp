@@ -22,6 +22,8 @@ Enemy::Enemy(double x,int type) {
 	planeSetPosition(this->enemyPlane, this->enemyPlanePosition);
 	this->isKilled = false;
 
+
+
 }
 
 
@@ -70,10 +72,24 @@ void Enemy::decreaseExplodeTimes()
 	this->explodeTimes--;
 }
 
+std::vector<Bullet*>& Enemy::getEnemyBullets()
+{
+	return this->enemyBullet;
+}
+
+
+void Enemy::enemyFire()
+{
+	std::cout<<"enemyFire"<<std::endl;
+	this->enemyBullet.push_back(new Bullet(this->enemyPlane.getPosition(),2));
+	std::cout<<"size: "<<this->enemyBullet.size()<<std::endl;
+}
+
 int Enemy::getType()
 {
 	return this->type;
 }
+
 Enemy::~Enemy() {
 	// TODO Auto-generated destructor stub
 }

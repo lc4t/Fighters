@@ -15,6 +15,7 @@ const std::string GAME_NAME = "Fighters";
 const int heroFireSpeed = 25;
 const float enemyMoveSpeed1 = 0.5f;
 const int EnemyAddSpeed = 700;
+const int enemyFireSpeed = 300;
 /***********resources ***********/
 
 const std::string imageBasePath = "resources/image/";
@@ -27,6 +28,7 @@ const std::string bgiPath = imageBasePath + "background.png";
 const std::string gameOverImagePath = imageBasePath + "gameover.png";
 const std::string heroPath = imageBasePath + "hero.png";
 const std::string bulletPath1 = imageBasePath + "heroBullet1.png";
+const std::string bulletPath2 = imageBasePath + "heroBullet2.png";
 const std::string enemyPlanePath1 = imageBasePath + "enemyPlane1.png";
 const std::string enemyPlanePath1Attack2 = imageBasePath + "enemyPlane1Attack2.png";
 const std::string enemyPlanePath2 = imageBasePath + "enemyPlane2.png";

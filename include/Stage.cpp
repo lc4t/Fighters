@@ -130,6 +130,10 @@ void Stage::drawEnemies()
 		else
 		{
 			this->getWindow()->draw((*i)->drawEnemy());
+			if (random() % enemyFireSpeed == 0)
+			{
+				(*i)->enemyFire();
+			}
 			i++;
 		}
 	}
@@ -150,6 +154,20 @@ void Stage::drawShow()
 {
 
 	this->getWindow()->draw(this->show.getScoreText());
+}
+
+void Stage::drawEnemysBullets()
+{
+	for (std::vector<Enemy*>::iterator i = enemies.begin() ;i != enemies.end() && enemies.size() != 0;)
+	{
+		std::vector<Bullet*> bullets = (*i)->getEnemyBullets();
+		for (std::vector<Bullet*>::iterator j = bullets.begin() ;j != bullets.end() && bullets.size() != 0;)
+		{
+			this->getWindow()->draw((*j)->drawBullet());
+			j++;
+		}
+		i++;
+	}
 }
 
 
@@ -177,10 +195,12 @@ void Stage::draw()
 		}
 		std::vector<Bullet*> heroBullet = hero.fire();
 		Died dieTest(enemies,heroBullet);
+
 		drawAddBullet();
 		addEnemy();
 		drawShow();
 		drawEnemies();
+		drawEnemysBullets();
 		this->getWindow()->display();
 	}
 

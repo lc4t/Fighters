@@ -9,6 +9,7 @@
 #define INCLUDE_ENEMY_H_
 #include "Object.h"
 #include "config.h"
+#include "Bullet.h"
 class Enemy:public Object {
 public:
 	Enemy(double x,int type);
@@ -27,6 +28,12 @@ public:
 	int getExplodeTimes();
 	void decreaseExplodeTimes();
 	int getType();
+
+	std::vector<Bullet*> enemyBullet;
+	std::vector<Bullet*>& getEnemyBullets();
+	void enemyFire();
+
+
 
 
 	virtual ~Enemy();

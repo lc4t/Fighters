@@ -15,6 +15,11 @@ public:
 	Object();
 	void planeAutoMoveDown(sf::Sprite &plane);
 	void planeSetPosition(sf::Sprite &plane, sf::Vector2f position);
+
+
+
+
+
 	virtual ~Object();
 };
 
