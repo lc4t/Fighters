@@ -31,13 +31,9 @@ void Stage::setHero(Hero &hero)
 }
 
 
-//void Stage::isTimeOut(float testTime)
-//{
-//	this->enemyControlTimer.restart();
-//	std::cout <<this->thisEnemyTime.asSeconds()<< std::endl;
-//}
 
-void Stage::heroControl()
+
+void Stage::heroControl()   // hero的控制
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
@@ -53,7 +49,7 @@ void Stage::heroControl()
 			if (this->heroBulletAdder == 0)
 			{
 				musics.playBulletShootSound();
-				hero.isFire();
+				hero.isFire(this->heroBullet);
 				++this->heroBulletAdder %= heroFireSpeed;
 			}
 			else
@@ -64,7 +60,7 @@ void Stage::heroControl()
 	}
 }
 
-void Stage::musicControl()
+void Stage::musicControl()   // music
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Add))
 	{
@@ -89,12 +85,12 @@ void Stage::musicControl()
 
 }
 
-void Stage::drawAddBullet()
+void Stage::drawAddBullet()	//hero 是否 打到 敌机 draw 子弹
 {
-	std::vector<Bullet*> heroBullet = hero.fire();	//draw 子弹
-	for (std::vector<Bullet*>::iterator i = heroBullet.begin() ;i != heroBullet.end() && heroBullet.size() != 0;)
+//	std::vector<Bullet*> heroBullet = hero.fire();	//draw 子弹
+	for (std::vector<Bullet*>::iterator i = this->heroBullet.begin() ;i != this->heroBullet.end() && this->heroBullet.size() != 0;)
 	{
-		if ((*i)->isShouldDelete())
+		if ((*i)->isShouldDelete(1))
 		{
 			i = heroBullet.erase(i);
 		}
@@ -104,10 +100,10 @@ void Stage::drawAddBullet()
 			i++;
 		}
 	}
-	std::vector<Bullet*>(heroBullet).swap(heroBullet);
+	std::vector<Bullet*>(this->heroBullet).swap(this->heroBullet);
 }
 
-void Stage::drawEnemies()
+void Stage::drawEnemies()   // draw 敌机 敌机被击毁检测 敌机fire
 {
 	for (std::vector<Enemy*>::iterator i = enemies.begin() ;i != enemies.end() && enemies.size() != 0;)
 	{
@@ -132,7 +128,7 @@ void Stage::drawEnemies()
 			this->getWindow()->draw((*i)->drawEnemy());
 			if (random() % enemyFireSpeed == 0)
 			{
-				(*i)->enemyFire();
+				(*i)->enemyFire(this->enemiesBullets);
 			}
 			i++;
 		}
@@ -141,35 +137,43 @@ void Stage::drawEnemies()
 
 }
 
-void Stage::addEnemy()
+void Stage::addEnemy()   // 自动增加敌机
 {
 	if (random() % EnemyAddSpeed ==0)
 	{
-		std::cout<<"Add an Enemy"<<std::endl;
 		enemyAdder();
 	}
 }
 
-void Stage::drawShow()
+void Stage::drawShow()   //分数
 {
 
 	this->getWindow()->draw(this->show.getScoreText());
 }
 
-void Stage::drawEnemysBullets()
+void Stage::drawEnemysBullets()   // 敌机的子弹
 {
-	for (std::vector<Enemy*>::iterator i = enemies.begin() ;i != enemies.end() && enemies.size() != 0;)
+
+	for (std::vector<Bullet*>::iterator i = this->enemiesBullets.begin() ;i != this->enemiesBullets.end() && this->enemiesBullets.size() != 0;)
 	{
-		std::vector<Bullet*> bullets = (*i)->getEnemyBullets();
-		for (std::vector<Bullet*>::iterator j = bullets.begin() ;j != bullets.end() && bullets.size() != 0;)
+		if ((*i)->isShouldDelete(2))
 		{
-			this->getWindow()->draw((*j)->drawBullet());
-			j++;
+			i = this->enemiesBullets.erase(i);
 		}
-		i++;
+		else
+		{
+			this->getWindow()->draw((*i)->drawBullet());
+			i++;
+		}
 	}
+	std::vector<Bullet*>(this->enemiesBullets).swap(this->enemiesBullets);
 }
 
+
+std::vector<Bullet*>& Stage::getEnemiesBullets()
+{
+	return this->enemiesBullets;
+}
 
 void Stage::draw()
 {
@@ -193,14 +197,15 @@ void Stage::draw()
 			this->getWindow()->draw(this->BGI.getBG());	//加载背景图片
 			this->getWindow()->draw(this->hero.getHero());	//飞机
 		}
-		std::vector<Bullet*> heroBullet = hero.fire();
-		Died dieTest(enemies,heroBullet);
+//		std::vector<Bullet*> heroBullet = hero.fire();
+		Died dieTest(enemies,this->heroBullet);
 
 		drawAddBullet();
 		addEnemy();
 		drawShow();
 		drawEnemies();
 		drawEnemysBullets();
+
 		this->getWindow()->display();
 	}
 

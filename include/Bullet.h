@@ -19,7 +19,7 @@ public:
 
 	sf::Sprite drawBullet();
 	void bulletAutoMove();
-	bool isShouldDelete();
+	bool isShouldDelete(int type);
 	int getType();
 	void beKilled();
 	bool getIsKilled();

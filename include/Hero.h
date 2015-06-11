@@ -21,8 +21,8 @@ public:
 	sf::Sprite getHero();		//返回 飞机
 	void moveLeft();
 	void moveRight();			//移动
-	void isFire();
-	std::vector<Bullet*>& fire();
+	void isFire(std::vector<Bullet*> &heroBullet);
+//	std::vector<Bullet*>& fire();
 	void addHeroBullet();
 	virtual ~Hero();
 };

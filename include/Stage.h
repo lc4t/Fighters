@@ -29,10 +29,13 @@ public:
 	BackgroundImage BGI;
 	Musics musics;
 	Hero hero;
+	std::vector<Bullet*> heroBullet;
 	Show show;
 	int heroBulletAdder;
 ////////////////////////////////////////////////
 	std::vector<Enemy*> enemies;	// 敌机
+	std::vector<Bullet*> enemiesBullets;
+	std::vector<Bullet*>& getEnemiesBullets();
 	void enemyAdder();
 	void drawEnemies();
 ///////////////////////////////////////////////

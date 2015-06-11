@@ -15,10 +15,9 @@ Died::Died(std::vector<Enemy*> &enemies,std::vector<Bullet*> &bullets)
 		{
 			if (isCrash((*i)->getPosition(), (*i)->getType(), (*j)->getPosition(), (*j)->getType()))
 			{
-				std::cout<<"Here"<<std::endl;
-
 				(*i)->beKilled();
 				(*j)->beKilled();
+				continue;
 			}
 		}
 	}
@@ -31,30 +30,16 @@ bool Died::isCrash(sf::Vector2f object1, int object1Type, sf::Vector2f object2, 
 		//判断在哪一支下面
 	switch(object1Type)
 	{
-		case 1:
+		case 1:	// enemy is 1
 		{
 			switch (object2Type)
 			{
-				case 1:
+				case 1: 	//  1 is bullets
 				{
-					int crash1 = isUpLine(object1 + enemyPlane1LeftCrashPoint,object1 + enemyPlane1CenterCrashPoint,object2);
-					int crash2 = isUpLine(object1 + enemyPlane1CenterCrashPoint,object1 + enemyPlane1RightCrashPoint,object2);
-					int crash = crash1 + crash2;
-					if (crash == 0x002)
+					if (isCrashDown(object1, object1Type, object2, object2Type) == 1)
 					{
-						return false;	// no need test again,not in this down
+						return true;
 					}
-					else if (crash >= 0x100)
-					{
-
-						return true;//crash
-					}
-					else
-					{
-						return false;
-					}
-
-
 				}
 			}
 
@@ -63,7 +48,6 @@ bool Died::isCrash(sf::Vector2f object1, int object1Type, sf::Vector2f object2, 
 	}
 	return false;
 }
-
 
 int Died::isUpLine(sf::Vector2f linePoint1, sf::Vector2f linePoint2, sf::Vector2f testPoint)
 {
@@ -100,6 +84,29 @@ void Died::swap(sf::Vector2f &v1, sf::Vector2f &v2)
 	temp = v1;
 	v1 = v2;
 	v2 = temp;
+}
+
+int Died::isCrashDown(sf::Vector2f object1, int object1Type, sf::Vector2f object2, int object2Type)
+{
+	switch(object1Type)
+		{
+			case 1:	// enemy is 1
+			{
+				switch (object2Type)
+				{
+					case 1: 	//  1 is bullets
+					{
+						if (object2.x >= object1.x- 0.001 &&
+								object2.x <= object1.x + enemyPlane1Size.x - 0.001 &&
+								object2.y < object1.y + enemyPlane1Size.y - 0.01)
+						{
+							return 1;
+						}
+					}
+				}
+			}
+		}
+	return -1;
 }
 
 Died::~Died() {

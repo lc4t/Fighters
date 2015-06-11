@@ -7,7 +7,8 @@
 
 #include <Enemy.h>
 
-Enemy::Enemy(double x,int type) {
+Enemy::Enemy(double x,int type)
+{
 	this->type = type;
 	switch (type)
 	{
@@ -22,8 +23,6 @@ Enemy::Enemy(double x,int type) {
 	planeSetPosition(this->enemyPlane, this->enemyPlanePosition);
 	this->isKilled = false;
 
-
-
 }
 
 
@@ -32,7 +31,6 @@ bool Enemy::isShouldDelete()
 {
 	if (this->enemyPlane.getPosition().y >= GAME_HEIGHT || this->isKilled)
 	{
-		std::cout<<"Y:"<<enemyPlane.getPosition().y<<std::endl;
 		return true;
 	}
 	else
@@ -72,17 +70,15 @@ void Enemy::decreaseExplodeTimes()
 	this->explodeTimes--;
 }
 
-std::vector<Bullet*>& Enemy::getEnemyBullets()
-{
-	return this->enemyBullet;
-}
+//std::vector<Bullet*>& Enemy::getEnemyBullets()
+//{
+//	return this->enemyBullet;
+//}
 
 
-void Enemy::enemyFire()
+void Enemy::enemyFire(std::vector<Bullet*> &enemiesBullets)
 {
-	std::cout<<"enemyFire"<<std::endl;
-	this->enemyBullet.push_back(new Bullet(this->enemyPlane.getPosition(),2));
-	std::cout<<"size: "<<this->enemyBullet.size()<<std::endl;
+	enemiesBullets.push_back(new Bullet(this->enemyPlane.getPosition(),2));
 }
 
 int Enemy::getType()

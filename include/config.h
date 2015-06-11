@@ -12,10 +12,10 @@
 const int GAME_HEIGHT = 600;
 const int GAME_WIDTH =	400;
 const std::string GAME_NAME = "Fighters";
-const int heroFireSpeed = 25;
+const int heroFireSpeed = 20;
 const float enemyMoveSpeed1 = 0.5f;
-const int EnemyAddSpeed = 700;
-const int enemyFireSpeed = 300;
+const int EnemyAddSpeed = 700; 	// smaller , faster
+const int enemyFireSpeed = 300; //
 /***********resources ***********/
 
 const std::string imageBasePath = "resources/image/";
@@ -52,6 +52,7 @@ const sf::Vector2f heroBullet1Area = sf::Vector2f(8,20);			//子弹1区域
 const sf::Vector2f enemyPlane1CenterCrashPoint = sf::Vector2f(23,34);	//中心碰撞点
 const sf::Vector2f enemyPlane1LeftCrashPoint = sf::Vector2f(0,13);	//左碰撞点
 const sf::Vector2f enemyPlane1RightCrashPoint = sf::Vector2f(47,13);	//右碰撞点
+const sf::Vector2f enemyPlane1Size = sf::Vector2f(48,33);      			//右下角
 /////////////
 
 

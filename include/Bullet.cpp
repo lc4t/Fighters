@@ -27,16 +27,13 @@ Bullet::Bullet(sf::Vector2f heroPosition, int type)
 			heroPosition.y += 26;
 			break;
 		}
-
 	}
-
 	sf::Sprite hero_bullet(this->heroBullet);
 	hero_bullet.setPosition(heroPosition);
 	this->hero_bullet = hero_bullet;
 	this->isKilled = false;
 
 }
-
 
 void Bullet::bulletAutoMove()
 {
@@ -55,23 +52,34 @@ void Bullet::bulletAutoMove()
 
 }
 
-
 sf::Sprite Bullet::drawBullet()
 {
 	bulletAutoMove();
 	return this->hero_bullet;
 }
 
-bool Bullet::isShouldDelete()
+bool Bullet::isShouldDelete(int type)
 {
-	if (this->hero_bullet.getPosition().y <= 0 || this->isKilled)
+	switch(type)
 	{
-		return true;
+		case 1:	//飞机的子弹
+		{
+			if (this->hero_bullet.getPosition().y <= 0 || this->isKilled)
+			{
+				return true;
+			}
+			break;
+		}
+		case 2:
+		{
+			if (this->hero_bullet.getPosition().y >= 600 || this->isKilled)
+			{
+				return true;
+			}
+			break;
+		}
 	}
-	else
-	{
-		return false ;
-	}
+	return false;
 }
 
 void Bullet::beKilled()
@@ -88,11 +96,11 @@ bool Bullet::getIsKilled()
 {
 	return this->isKilled;
 }
+
 sf::Vector2f Bullet::getPosition()
 {
 	return this->hero_bullet.getPosition();
 }
-
 
 Bullet::~Bullet() {
 	// TODO Auto-generated destructor stub

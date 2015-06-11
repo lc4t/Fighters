@@ -66,14 +66,14 @@ void Hero::moveRight()
 
 
 
-std::vector<Bullet*>& Hero::fire()
-{
-	return this->heroBullet;
-}
+//std::vector<Bullet*>& Hero::fire()
+//{
+//	return this->heroBullet;
+//}
 
-void Hero::isFire()
+void Hero::isFire(std::vector<Bullet*> &heroBullet)
 {
-	this->heroBullet.push_back(new Bullet(this->hero.getPosition(),1));
+	heroBullet.push_back(new Bullet(this->hero.getPosition(),1));
 }
 
 

@@ -15,7 +15,6 @@ public:
 	Enemy(double x,int type);
 	sf::Texture enemy_plane;
 	sf::Vector2f enemyPlanePosition;
-//	sf::Texture enemy_attack;
 	sf::Sprite enemyPlane;
 	int type;
 	bool isKilled;
@@ -29,9 +28,9 @@ public:
 	void decreaseExplodeTimes();
 	int getType();
 
-	std::vector<Bullet*> enemyBullet;
-	std::vector<Bullet*>& getEnemyBullets();
-	void enemyFire();
+//	std::vector<Bullet*> enemyBullet;
+//	std::vector<Bullet*>& getEnemyBullets();
+	void enemyFire(std::vector<Bullet*> &enemiesBullets);
 
 
 
