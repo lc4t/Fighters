@@ -14,6 +14,7 @@ public:
 	sf::Sprite bg;
 	BackgroundImage();
 	sf::Sprite getBG();
+	sf::Sprite getGameOver();
 	virtual ~BackgroundImage();
 };
 

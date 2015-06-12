@@ -10,11 +10,22 @@
 #include "Bullet.h"
 Hero::Hero()
 {
+	this->type = 10;
+	this->blood = 3;
 	loadMyhero();
 	this->hero.setPosition(sf::Vector2f(150, 480));
 	this->hero.setTexture(this->myHero);
 }
 
+void Hero::beKilled()
+{
+	this->blood--;
+}
+
+int Hero::getBlood()
+{
+	return this->blood;
+}
 
 void Hero::loadMyhero()
 {
@@ -64,7 +75,16 @@ void Hero::moveRight()
 
 }
 
+int Hero::getType()
+{
+	return this->type;
+}
 
+
+sf::Vector2f Hero::getPosition()
+{
+	return this->hero.getPosition();
+}
 
 //std::vector<Bullet*>& Hero::fire()
 //{

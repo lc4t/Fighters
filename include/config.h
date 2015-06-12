@@ -9,6 +9,10 @@
 #include <vector>
 /***********global    ***********/
 
+
+// type 1  enemy1 + hero's bullet
+// type 2  enemy2 + enemy's bullet
+// type 10 hero
 const int GAME_HEIGHT = 600;
 const int GAME_WIDTH =	400;
 const std::string GAME_NAME = "Fighters";
@@ -16,6 +20,8 @@ const int heroFireSpeed = 20;
 const float enemyMoveSpeed1 = 0.5f;
 const int EnemyAddSpeed = 700; 	// smaller , faster
 const int enemyFireSpeed = 300; //
+const float heroBulletSpeed = -5;
+const float enemyBulletSpeed = 3;
 /***********resources ***********/
 
 const std::string imageBasePath = "resources/image/";
@@ -53,6 +59,8 @@ const sf::Vector2f enemyPlane1CenterCrashPoint = sf::Vector2f(23,34);	//中心�
 const sf::Vector2f enemyPlane1LeftCrashPoint = sf::Vector2f(0,13);	//左碰撞点
 const sf::Vector2f enemyPlane1RightCrashPoint = sf::Vector2f(47,13);	//右碰撞点
 const sf::Vector2f enemyPlane1Size = sf::Vector2f(48,33);      			//右下角
+const sf::Vector2f heroPlane1Size = sf::Vector2f(98,111);				//右下角
+
 /////////////
 
 

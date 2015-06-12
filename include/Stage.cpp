@@ -30,9 +30,6 @@ void Stage::setHero(Hero &hero)
 	this->hero = hero;
 }
 
-
-
-
 void Stage::heroControl()   // hero的控制
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
@@ -149,6 +146,7 @@ void Stage::drawShow()   //分数
 {
 
 	this->getWindow()->draw(this->show.getScoreText());
+	this->getWindow()->draw(this->show.getBloodText(this->hero.getBlood()));
 }
 
 void Stage::drawEnemysBullets()   // 敌机的子弹
@@ -169,7 +167,6 @@ void Stage::drawEnemysBullets()   // 敌机的子弹
 	std::vector<Bullet*>(this->enemiesBullets).swap(this->enemiesBullets);
 }
 
-
 std::vector<Bullet*>& Stage::getEnemiesBullets()
 {
 	return this->enemiesBullets;
@@ -182,30 +179,49 @@ void Stage::draw()
 	++this->heroBulletAdder %= heroFireSpeed;
 	while (this->getWindow()->isOpen())
 	{
-		if (this->getWindow()->pollEvent(event))
+		this->getWindow()->clear();
+		if (this->hero.getBlood() > 0)
 		{
-			if (event.type == sf::Event::Closed)
+//			this->getWindow()->clear();
+			if (this->getWindow()->pollEvent(event))
 			{
-				this->getWindow()->close();
-				std::exit(0);
+				if (event.type == sf::Event::Closed)
+				{
+					this->getWindow()->close();
+					std::exit(0);
+				}
 			}
+			heroControl();
+			musicControl();
+			{
+//				this->getWindow()->clear();
+				this->getWindow()->draw(this->BGI.getBG());	//加载背景图片
+				this->getWindow()->draw(this->hero.getHero());	//飞机
+			}
+	//		std::vector<Bullet*> heroBullet = hero.fire();
+			Died enemyDieTest(enemies,this->heroBullet);
+			Died heroDieTest(this->hero, this->enemiesBullets);
+			std::cout<<hero.getBlood()<<std::endl;
+			drawAddBullet();
+			addEnemy();
+			drawShow();
+			drawEnemies();
+			drawEnemysBullets();
+
+
 		}
-		heroControl();
-		musicControl();
+		else
 		{
-			this->getWindow()->clear();
-			this->getWindow()->draw(this->BGI.getBG());	//加载背景图片
-			this->getWindow()->draw(this->hero.getHero());	//飞机
+			if (this->getWindow()->pollEvent(event))
+			{
+				if (event.type == sf::Event::Closed)
+				{
+					this->getWindow()->close();
+					std::exit(0);
+				}
+			}
+			this->getWindow()->draw(this->BGI.getGameOver());	//加载背景图片
 		}
-//		std::vector<Bullet*> heroBullet = hero.fire();
-		Died dieTest(enemies,this->heroBullet);
-
-		drawAddBullet();
-		addEnemy();
-		drawShow();
-		drawEnemies();
-		drawEnemysBullets();
-
 		this->getWindow()->display();
 	}
 

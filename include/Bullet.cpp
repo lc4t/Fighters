@@ -41,12 +41,12 @@ void Bullet::bulletAutoMove()
 	{
 		case 1:
 		{
-			hero_bullet.move(0,-5);
+			hero_bullet.move(0,heroBulletSpeed);
 			break;
 		}
 		case 2:// enemy1's bullets
 		{
-			hero_bullet.move(0,1);
+			hero_bullet.move(0,enemyBulletSpeed);
 		}
 	}
 

@@ -15,6 +15,11 @@ public:
 	Hero();
 	sf::Texture myHero;
 	sf::Sprite hero;
+	int type;
+	int blood;
+	void beKilled();
+	int getBlood();
+	int getType();
 	std::vector<Bullet*> heroBullet;
 	int isOverBound(int offsetX);
 	void loadMyhero();
@@ -22,8 +27,8 @@ public:
 	void moveLeft();
 	void moveRight();			//移动
 	void isFire(std::vector<Bullet*> &heroBullet);
-//	std::vector<Bullet*>& fire();
 	void addHeroBullet();
+	sf::Vector2f getPosition();
 	virtual ~Hero();
 };
 

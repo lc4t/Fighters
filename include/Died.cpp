@@ -7,6 +7,12 @@
 
 #include <Died.h>
 
+
+Died::Died()
+{
+
+}
+
 Died::Died(std::vector<Enemy*> &enemies,std::vector<Bullet*> &bullets)
 {
 	for (std::vector<Enemy*>::iterator i = enemies.begin();i != enemies.end() && enemies.size() != 0;i++)
@@ -21,8 +27,20 @@ Died::Died(std::vector<Enemy*> &enemies,std::vector<Bullet*> &bullets)
 			}
 		}
 	}
+}
 
+Died::Died(Hero &hero, std::vector<Bullet*> &enemyBullets)
+{
 
+	for (std::vector<Bullet*>::iterator j = enemyBullets.begin();j != enemyBullets.end() && enemyBullets.size() != 0;j++)
+	{
+		if (isCrash(hero.getPosition(), hero.getType(), (*j)->getPosition(), (*j)->getType()))
+		{
+			hero.beKilled();
+			(*j)->beKilled();
+			continue;
+		}
+	}
 }
 
 bool Died::isCrash(sf::Vector2f object1, int object1Type, sf::Vector2f object2, int object2Type)
@@ -42,8 +60,20 @@ bool Died::isCrash(sf::Vector2f object1, int object1Type, sf::Vector2f object2, 
 					}
 				}
 			}
-
-
+			break;
+		}
+		case 10: // hero is 10
+		{
+			switch(object2Type)
+			{
+				case 2:	// enemy 's bullet
+				{
+					if (isCrashDown(object1, object1Type, object2, object2Type) == 1)
+					{
+						return 1;
+					}
+				}
+			}
 		}
 	}
 	return false;
@@ -98,7 +128,24 @@ int Died::isCrashDown(sf::Vector2f object1, int object1Type, sf::Vector2f object
 					{
 						if (object2.x >= object1.x- 0.001 &&
 								object2.x <= object1.x + enemyPlane1Size.x - 0.001 &&
-								object2.y < object1.y + enemyPlane1Size.y - 0.01)
+								object2.y <= object1.y + enemyPlane1Size.y - 0.01)
+						{
+							return 1;
+						}
+					}
+				}
+				break;
+			}
+			case 10: // hero is 10
+			{
+				switch(object2Type)
+				{
+					case 2:	// enemy 's bullet
+					{
+						if (object2.x >= object1.x- 0.001 &&
+								object2.x <= object1.x + heroPlane1Size.x - 0.01 &&
+								object2.y >= object1.y + enemyPlane1Size.y - 0.01
+								)
 						{
 							return 1;
 						}

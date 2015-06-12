@@ -19,6 +19,12 @@ Show::Show()
 	this->scoreText.setColor(sf::Color::Black);
 	this->scoreText.setCharacterSize(24);
 	this->scoreText.setStyle(sf::Text::Bold);
+
+	this->bloodText.setFont(font);
+	this->bloodText.setColor(sf::Color::Red);
+	this->bloodText.setCharacterSize(24);
+	this->bloodText.setStyle(sf::Text::Bold);
+	this->bloodText.setPosition(300,0);
 }
 
 sf::Text& Show::getScoreText()
@@ -30,6 +36,33 @@ sf::Text& Show::getScoreText()
 	this->scoreText.setString("Score:" + int2string(this->score));
 	this->lastScore = this->score;
 	return this->scoreText;
+}
+
+sf::Text& Show::getBloodText(int blood)
+{
+	switch(blood)
+	{
+		case 3:
+		{
+			this->bloodText.setString("000");
+			break;
+		}
+		case 2:
+		{
+			this->bloodText.setString("00");
+			break;
+		}
+		case 1:
+		{
+			this->bloodText.setString("0");
+			break;
+		}
+		default:
+		{
+			this->bloodText.setString("0");
+		}
+	}
+	return this->bloodText;
 }
 
 void Show::socerAdder(int type)
