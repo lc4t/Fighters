@@ -58,7 +58,14 @@ void Musics::backgroundMusicDecrease()
 	backgroundMusic.setVolume((float)(this->backgroundMusicVolume));
 }
 
-
+void Musics::heroBeKilledMusicPlay()
+{
+	if (!this->heroBeKilledSound.openFromFile(heroBeKilledSoundPath))
+	 {
+		std::cout<<"Error to load heroBeKilledSound"<<std::endl;
+	 }
+	this->heroBeKilledSound.play();
+}
 
 
 
@@ -88,6 +95,7 @@ void Musics::stopSoundEffect()
 {
 	bulletShootSound.setVolume(0);
 	enemy1BeKilledSound.setVolume(0);
+	heroBeKilledSound.setVolume(0);
 }
 
 Musics::~Musics()

@@ -49,6 +49,7 @@ const std::string bulletShootSoundPath = soundBasePath + "bullet.ogg";
 const std::string enemy1BeKilledSoundPath = soundBasePath + "enemy1_down.ogg";
 const std::string enemy2BeKilledSoundPath = soundBasePath + "enemy2_down.ogg";
 const std::string enemy3BeKilledSoundPath = soundBasePath + "enemy3_down.ogg";
+const std::string heroBeKilledSoundPath = soundBasePath + "use_bomb.ogg";
 /***********font path ***********/
 
 const std::string fontPath = fontBasePath + "STHeiti Light.ttc";
@@ -61,7 +62,7 @@ const sf::Vector2f enemyPlane1CenterCrashPoint = sf::Vector2f(23,34);	//中心�
 const sf::Vector2f enemyPlane1LeftCrashPoint = sf::Vector2f(0,13);	//左碰撞点
 const sf::Vector2f enemyPlane1RightCrashPoint = sf::Vector2f(47,13);	//右碰撞点
 const sf::Vector2f enemyPlane1Size = sf::Vector2f(48,33);      			//右下角
-const sf::Vector2f heroPlane1Size = sf::Vector2f(98,111);				//右下角
+const sf::Vector2f heroPlane1Size = sf::Vector2f(98,83);				//右下角
 
 /////////////
 

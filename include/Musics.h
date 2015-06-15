@@ -13,6 +13,7 @@ public:
 	sf::Music backgroundMusic;
 	sf::Music bulletShootSound;
 	sf::Music enemy1BeKilledSound;
+	sf::Music heroBeKilledSound;
 	int backgroundMusicVolume;
 	Musics();
 	void backgroundMusicPlay();
@@ -25,6 +26,8 @@ public:
 	void playEnemyBeKilledSound();
 
 	void stopSoundEffect();
+
+	void heroBeKilledMusicPlay();
 	virtual ~Musics();
 };
 

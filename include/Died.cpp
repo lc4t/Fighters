@@ -29,13 +29,14 @@ Died::Died(std::vector<Enemy*> &enemies,std::vector<Bullet*> &bullets)
 	}
 }
 
-Died::Died(Hero &hero, std::vector<Bullet*> &enemyBullets)
+Died::Died(Hero &hero, std::vector<Bullet*> &enemyBullets,Musics& music)
 {
 
 	for (std::vector<Bullet*>::iterator j = enemyBullets.begin();j != enemyBullets.end() && enemyBullets.size() != 0;j++)
 	{
 		if (isCrash(hero.getPosition(), hero.getType(), (*j)->getPosition(), (*j)->getType()))
 		{
+			music.heroBeKilledMusicPlay();
 			hero.beKilled();
 			(*j)->beKilled();
 			continue;
@@ -44,7 +45,7 @@ Died::Died(Hero &hero, std::vector<Bullet*> &enemyBullets)
 }
 
 
-Died::Died(Hero & hero,std::vector<Enemy*> &enemies)
+Died::Died(Hero & hero,std::vector<Enemy*> &enemies,Musics& music)
 {// 10 1
 
 	for (std::vector<Enemy*>::iterator i = enemies.begin();i != enemies.end() && enemies.size() != 0;i++)
@@ -55,8 +56,10 @@ Died::Died(Hero & hero,std::vector<Enemy*> &enemies)
 			{
 				continue;
 			}
+			music.heroBeKilledMusicPlay();
 			(*i)->beKilled();
 			hero.beKilled();
+
 			continue;
 		}
 	}

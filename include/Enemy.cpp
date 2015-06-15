@@ -70,12 +70,6 @@ void Enemy::decreaseExplodeTimes()
 	this->explodeTimes--;
 }
 
-//std::vector<Bullet*>& Enemy::getEnemyBullets()
-//{
-//	return this->enemyBullet;
-//}
-
-
 void Enemy::enemyFire(std::vector<Bullet*> &enemiesBullets)
 {
 	enemiesBullets.push_back(new Bullet(this->enemyPlane.getPosition(),2));

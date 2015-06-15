@@ -70,7 +70,7 @@ void Stage::musicControl()   // music
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F3))
 	{
-		this->musics.backgroundMusicPause();
+		this->musics.backgroundMusicPlay();
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F4))
 	{
@@ -150,7 +150,7 @@ void Stage::drawShow()   //分数 & level
 	this->getWindow()->draw(this->show.getScoreText());
 	this->getWindow()->draw(this->show.getBloodText(this->hero.getBlood()));
 	this->getWindow()->draw(this->show.getLevelText());
-
+	show.level %= (hardLevel / 10);
 	if (show.score - show.needScore >= show.level * 10)
 	{
 		show.level ++;
@@ -161,7 +161,7 @@ void Stage::drawShow()   //分数 & level
 	{
 		show.needScore += 1;
 	}
-	std::cout<<show.needScore<<std::endl;
+//	std::cout<<show.needScore<<std::endl;
 }
 
 void Stage::drawEnemysBullets()   // 敌机的子弹
@@ -213,8 +213,8 @@ void Stage::draw()
 				this->getWindow()->draw(this->hero.getHero());	//飞机
 			}
 			Died enemyDieTest(enemies,this->heroBullet);
-			Died heroDieTest(this->hero, this->enemiesBullets);
-			Died heroCrashEnemy(this->hero,this->enemies);
+			Died heroDieTest(this->hero, this->enemiesBullets,this->musics);
+			Died heroCrashEnemy(this->hero,this->enemies,this->musics);
 			drawAddBullet();
 			addEnemy();
 			drawShow();
