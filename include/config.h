@@ -19,9 +19,11 @@ const std::string GAME_NAME = "Fighters";
 const int heroFireSpeed = 20;
 const float enemyMoveSpeed1 = 0.5f;
 const int EnemyAddSpeed = 700; 	// smaller , faster
-const int enemyFireSpeed = 300; //
+const int enemyFireSpeed = 300;
 const float heroBulletSpeed = -5;
 const float enemyBulletSpeed = 3;
+
+const int hardLevel = 201;  //max level is this / 10;
 /***********resources ***********/
 
 const std::string imageBasePath = "resources/image/";

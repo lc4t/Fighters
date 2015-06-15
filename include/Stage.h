@@ -32,6 +32,7 @@ public:
 	std::vector<Bullet*> heroBullet;
 	Show show;
 	int heroBulletAdder;
+	int needScore;
 ////////////////////////////////////////////////
 	std::vector<Enemy*> enemies;	// 敌机
 	std::vector<Bullet*> enemiesBullets;

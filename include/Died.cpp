@@ -43,6 +43,26 @@ Died::Died(Hero &hero, std::vector<Bullet*> &enemyBullets)
 	}
 }
 
+
+Died::Died(Hero & hero,std::vector<Enemy*> &enemies)
+{// 10 1
+
+	for (std::vector<Enemy*>::iterator i = enemies.begin();i != enemies.end() && enemies.size() != 0;i++)
+	{
+		if (isCrashDown(hero.getPosition(), hero.getType(), (*i)->getPosition(), (*i)->getType()) == 1)
+		{
+			if ((*i)->isKilled == true)
+			{
+				continue;
+			}
+			(*i)->beKilled();
+			hero.beKilled();
+			continue;
+		}
+	}
+
+}
+
 bool Died::isCrash(sf::Vector2f object1, int object1Type, sf::Vector2f object2, int object2Type)
 {						//Enemy && Bullet
 		//判断在哪一支下面
@@ -140,6 +160,23 @@ int Died::isCrashDown(sf::Vector2f object1, int object1Type, sf::Vector2f object
 			{
 				switch(object2Type)
 				{
+					case 1://enemy
+					{ // 右下角 	// object1 hero object 2 enemy
+						if (object2.x + enemyPlane1Size.x >= object1.x- 0.001 &&
+								object2.x + enemyPlane1Size.x <= object1.x + heroPlane1Size.x - 0.01 &&
+								object2.y + enemyPlane1Size.y >= object1.y  - 0.01
+														)
+						{
+							return 1;
+						}// 左上角
+						else if (object2.x >= object1.x- 0.001 &&
+								object2.x  <= object1.x + heroPlane1Size.x - 0.01 &&
+								object2.y  >= object1.y + heroPlane1Size.y - 0.01)
+						{
+							return 1;
+						}
+						break;
+					}
 					case 2:	// enemy 's bullet
 					{
 						if (object2.x >= object1.x- 0.001 &&

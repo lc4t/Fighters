@@ -13,6 +13,7 @@ Stage::Stage()
 	this->window = new sf::RenderWindow(sf::VideoMode(GAME_WIDTH, GAME_HEIGHT), GAME_NAME);
 	this->musics.backgroundMusicPlay();
 	this->heroBulletAdder = 0;
+
 }
 
 Stage::~Stage()
@@ -123,7 +124,7 @@ void Stage::drawEnemies()   // draw 敌机 敌机被击毁检测 敌机fire
 		else
 		{
 			this->getWindow()->draw((*i)->drawEnemy());
-			if (random() % enemyFireSpeed == 0)
+			if (random() % (enemyFireSpeed) == 0) // enemyFireSpeed
 			{
 				(*i)->enemyFire(this->enemiesBullets);
 			}
@@ -136,17 +137,31 @@ void Stage::drawEnemies()   // draw 敌机 敌机被击毁检测 敌机fire
 
 void Stage::addEnemy()   // 自动增加敌机
 {
-	if (random() % EnemyAddSpeed ==0)
+	show.level %= hardLevel;
+	if (random() % (hardLevel - (show.level * 10)) ==0) //EnemyAddSpeed  100 level
 	{
 		enemyAdder();
 	}
 }
 
-void Stage::drawShow()   //分数
+void Stage::drawShow()   //分数 & level
 {
 
 	this->getWindow()->draw(this->show.getScoreText());
 	this->getWindow()->draw(this->show.getBloodText(this->hero.getBlood()));
+	this->getWindow()->draw(this->show.getLevelText());
+
+	if (show.score - show.needScore >= show.level * 10)
+	{
+		show.level ++;
+		show.needScore = show.score;
+	}
+
+	if (show.level % 5 == 0 && random() % hardLevel  == 0)
+	{
+		show.needScore += 1;
+	}
+	std::cout<<show.needScore<<std::endl;
 }
 
 void Stage::drawEnemysBullets()   // 敌机的子弹
@@ -194,14 +209,12 @@ void Stage::draw()
 			heroControl();
 			musicControl();
 			{
-//				this->getWindow()->clear();
 				this->getWindow()->draw(this->BGI.getBG());	//加载背景图片
 				this->getWindow()->draw(this->hero.getHero());	//飞机
 			}
-	//		std::vector<Bullet*> heroBullet = hero.fire();
 			Died enemyDieTest(enemies,this->heroBullet);
 			Died heroDieTest(this->hero, this->enemiesBullets);
-			std::cout<<hero.getBlood()<<std::endl;
+			Died heroCrashEnemy(this->hero,this->enemies);
 			drawAddBullet();
 			addEnemy();
 			drawShow();
